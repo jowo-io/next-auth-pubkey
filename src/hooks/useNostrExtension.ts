@@ -87,7 +87,7 @@ export function useNostrExtension(session: NextAuthNostrClientSession): {
               () =>
                 reject(
                   new Error(
-                    "timeouted after " + timeoutMs + " ms waiting for extension"
+                    "timed out after " + timeoutMs + " ms waiting for extension"
                   )
                 ),
               timeoutMs
