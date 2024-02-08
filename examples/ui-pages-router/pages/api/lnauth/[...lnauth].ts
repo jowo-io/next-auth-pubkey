@@ -37,7 +37,8 @@ const config: NextAuthLightningConfig = {
   generateName,
   generateAvatar,
   pages: {
-    signIn: "/signin",
+    lightningSignIn: "/lightning-signin",
+    nostrSignIn: "/nostr-signin",
     error: "/error",
   },
   theme: {
@@ -45,8 +46,8 @@ const config: NextAuthLightningConfig = {
   },
 };
 
-const { provider, handler } = NextAuthLightning(config);
+const { lightningProvider, nostrProvider, handler } = NextAuthLightning(config);
 
-export const lightningProvider = provider;
+export { lightningProvider, nostrProvider };
 
 export default handler;

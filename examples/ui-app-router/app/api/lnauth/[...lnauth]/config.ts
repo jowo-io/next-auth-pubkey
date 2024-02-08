@@ -38,7 +38,8 @@ const config: NextAuthLightningConfig = {
   generateAvatar,
 
   pages: {
-    signIn: "/signin",
+    lightningSignIn: "/lightning-signin",
+    nostrSignIn: "/nostr-signin",
     error: "/error",
   },
   flags: {
@@ -50,8 +51,9 @@ const config: NextAuthLightningConfig = {
   },
 };
 
-const { provider, GET, POST } = NextAuthLightning(config);
+const { lightningProvider, nostrProvider, GET, POST } =
+  NextAuthLightning(config);
 
-export const lightningProvider = provider;
+export { lightningProvider, nostrProvider };
 
 export { GET, POST };

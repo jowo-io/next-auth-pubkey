@@ -56,7 +56,6 @@ export const vanilla = function ({
         return r.json();
       })
       .then(function (d) {
-        console.log(d);
         if (d && d.success) {
           cleanup();
           let url = new URL(query.redirect_uri);
@@ -70,7 +69,7 @@ export const vanilla = function ({
       });
   }
 
-  // create a new lnurl and inject content into dom
+  // create a new k1 nd inject content into dom
   function create() {
     const params = new URLSearchParams({ state: query.state });
     if (session && session.k1) {
@@ -117,6 +116,7 @@ export const vanilla = function ({
           });
         }
 
+        // trigger extension
         triggerExtension(session.k1);
 
         createIntervalId = setInterval(create, session.createInterval);
@@ -185,41 +185,40 @@ export const vanilla = function ({
     });
   }
 
-  async function triggerExtension(k1: string) {
+  // trigger the nostr extension / handle errors on failure
+  function triggerExtension(k1: string) {
     if (!window.nostr) {
       setError("nostr extension not found", false);
       return;
     }
-    try {
-      // have them sign a message with the challenge
-      let event;
-      try {
-        event = await callWithTimeout(
-          () =>
-            window.nostr.signEvent({
-              kind: 22242,
-              created_at: Math.floor(Date.now() / 1000),
-              tags: [["challenge", k1]],
-              content: "Authentication",
-            }),
-          5000
-        );
-        if (!event) throw new Error("extension returned empty event");
-      } catch (e) {
-        const message = e instanceof Error ? e.message : null;
+
+    return callWithTimeout(
+      () =>
+        window.nostr.signEvent({
+          kind: 22242,
+          created_at: Math.floor(Date.now() / 1000),
+          tags: [["challenge", k1]],
+          content: "Authentication",
+        }),
+      5000
+    )
+      .then((event) => {
+        if (event) {
+          callback(event);
+        } else {
+          setError("extension returned empty event");
+        }
+      })
+      .catch((e) => {
+        const message =
+          e instanceof Error
+            ? e.message
+            : "nostr extension failed to sign event";
         if (message === "window.nostr call already executing") {
           return;
         }
-        setError("nostr extension failed to sign event");
-        return;
-      }
-
-      await callback(event);
-    } catch (e) {
-      console.log("nostr auth error", e);
-      const message = e instanceof Error ? e.message : "Something went wrong";
-      setError(message);
-    }
+        setError(message);
+      });
   }
 
   // setup intervals and create first qr code

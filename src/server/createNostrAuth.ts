@@ -1,10 +1,10 @@
 import { cleanParams } from "../main/utils/params";
 import { hardConfig } from "../main/config";
-import { LightningClientSession } from "./types";
+import { NostrClientSession } from "./types";
 
-export default async function createLightningAuth(
+export default async function createNostrAuth(
   searchParams: Record<string, string | string[] | undefined | null>
-): Promise<LightningClientSession> {
+): Promise<NostrClientSession> {
   const {
     client_id: baseUrl = "",
     state = "",
@@ -30,11 +30,6 @@ export default async function createLightningAuth(
   return {
     data: {
       k1: data.k1,
-      lnurl: data.lnurl,
-    },
-    intervals: {
-      poll: data.pollInterval,
-      create: data.createInterval,
     },
     query: { state, redirectUri },
   };

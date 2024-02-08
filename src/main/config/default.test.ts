@@ -45,7 +45,8 @@ describe("formatConfig", () => {
       generateAvatar,
       generateName,
       pages: {
-        signIn: "/login",
+        lightningSignIn: "/lightning-signin",
+        nostrSignIn: "/nostr-signin",
         error: "/error",
       },
       flags: {
@@ -76,7 +77,8 @@ describe("formatConfig", () => {
         generateAvatar,
         generateName,
         pages: {
-          signIn: "/login",
+          lightningSignIn: "/lightning-signin",
+          nostrSignIn: "/nostr-signin",
           error: "/error",
         },
         flags: {

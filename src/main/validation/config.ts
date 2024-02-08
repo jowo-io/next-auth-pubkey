@@ -22,7 +22,8 @@ export const configValidation = z
     generateName: z.function().optional(),
     pages: z
       .object({
-        signIn: z.string().regex(leadingSlashRegex).min(1).optional(),
+        lightningSignIn: z.string().regex(leadingSlashRegex).min(1).optional(),
+        nostrSignIn: z.string().regex(leadingSlashRegex).min(1).optional(),
         error: z.string().regex(leadingSlashRegex).min(1).optional(),
       })
       .strict()

@@ -114,9 +114,9 @@ const config: NextAuthLightningConfig = {
   },
 };
 
-const { provider, handler } = NextAuthLightning(config);
+const { lightningProvider, nostrProvider, handler } = NextAuthLightning(config);
 
-export const lightningProvider = provider;
+export { lightningProvider, nostrProvider };
 
 export default handler;
 ```
@@ -130,11 +130,12 @@ In your existing `pages/api/auth/[...nextauth].ts` config file, import and add t
 ```typescript
 // @/pages/api/auth/[...nextauth].ts
 
-import { lightningProvider } from "../lnauth/[...lnauth]"; // <--- import the provider that's exported from the lnauth API route
+import { lightningProvider, nostrProvider } from "../lnauth/[...lnauth]"; // <--- import the providers from the lnauth API route
 
 export const authOptions: AuthOptions = {
   providers: [
-    lightningProvider, // <--- and add the provider to the providers array
+    lightningProvider, // <--- and add the providers to the providers array
+    nostrProvider, //     <--- and add the providers to the providers array
   ],
 };
 

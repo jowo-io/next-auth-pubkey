@@ -68,11 +68,11 @@ function NostrAuthPage({ title, config }: { title: string; config: Config }) {
             },
             details: {
               marginTop: 15,
-              display: "none",
+              display: "none", // initially hidden
               textAlign: "left",
             },
             button: {
-              display: "none",
+              display: "none", // initially hidden
               margin: "auto",
               alignItems: "center",
               backgroundColor: config.theme.background,
