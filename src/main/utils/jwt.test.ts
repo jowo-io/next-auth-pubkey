@@ -77,7 +77,7 @@ describe("jwt", () => {
       const output = await generateIdToken(
         pubkey,
         "foo-bar",
-        `${config.baseUrl}/api/lnauth/avatar/${pubkey}`,
+        `${config.baseUrl}/api/pubkey/avatar/${pubkey}`,
         config
       );
       const decoded = await jose.jwtVerify(output, secret);
@@ -87,7 +87,7 @@ describe("jwt", () => {
           exp: 1799999999,
           iat: 1700000000,
           id: "0123456789",
-          image: `${config.baseUrl}/api/lnauth/avatar/${pubkey}`,
+          image: `${config.baseUrl}/api/pubkey/avatar/${pubkey}`,
           iss: "http://a.b",
           name: "foo-bar",
           sub: "0123456789",

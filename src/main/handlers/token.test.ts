@@ -68,7 +68,7 @@ describe("token handler", () => {
   describe("grant type code ", () => {
     test("throws without k1", async () => {
       const config = formatConfig({ ...requiredConfig }) as Config;
-      const url = new URL(`${requiredConfig.baseUrl}/api/lnauth/token`);
+      const url = new URL(`${requiredConfig.baseUrl}/api/pubkey/token`);
       const output = await handler({
         body: { grant_type: "authorization_code" },
         cookies: {},
@@ -83,7 +83,7 @@ describe("token handler", () => {
 
     test("triggers get", async () => {
       const config = formatConfig({ ...requiredConfig }) as Config;
-      const url = new URL(`${requiredConfig.baseUrl}/api/lnauth/token`);
+      const url = new URL(`${requiredConfig.baseUrl}/api/pubkey/token`);
       await handler({
         body: { grant_type: "authorization_code", code: k1 },
         cookies: {},
@@ -107,7 +107,7 @@ describe("token handler", () => {
           },
         })
       ) as Config;
-      const url = new URL(`${requiredConfig.baseUrl}/api/lnauth/token`);
+      const url = new URL(`${requiredConfig.baseUrl}/api/pubkey/token`);
       const output = await handler({
         body: { grant_type: "authorization_code", code: k1 },
         cookies: {},
@@ -130,7 +130,7 @@ describe("token handler", () => {
           },
         })
       ) as Config;
-      const url = new URL(`${requiredConfig.baseUrl}/api/lnauth/token`);
+      const url = new URL(`${requiredConfig.baseUrl}/api/pubkey/token`);
       const output = await handler({
         body: { grant_type: "authorization_code", code: k1 },
         cookies: {},
@@ -151,7 +151,7 @@ describe("token handler", () => {
           },
         })
       ) as Config;
-      const url = new URL(`${requiredConfig.baseUrl}/api/lnauth/token`);
+      const url = new URL(`${requiredConfig.baseUrl}/api/pubkey/token`);
       const output = await handler({
         body: { grant_type: "authorization_code", code: k1 },
         cookies: {},
@@ -166,7 +166,7 @@ describe("token handler", () => {
 
     test("triggers delete", async () => {
       const config = formatConfig({ ...requiredConfig }) as Config;
-      const url = new URL(`${requiredConfig.baseUrl}/api/lnauth/token`);
+      const url = new URL(`${requiredConfig.baseUrl}/api/pubkey/token`);
       await handler({
         body: { grant_type: "authorization_code", code: k1 },
         cookies: {},
@@ -189,7 +189,7 @@ describe("token handler", () => {
           }),
         })
       ) as Config;
-      const url = new URL(`${requiredConfig.baseUrl}/api/lnauth/token`);
+      const url = new URL(`${requiredConfig.baseUrl}/api/pubkey/token`);
       const output = await handler({
         body: { grant_type: "authorization_code", code: k1 },
         cookies: {},
@@ -204,7 +204,7 @@ describe("token handler", () => {
 
     test("returns response", async () => {
       const config = formatConfig({ ...requiredConfig }) as Config;
-      const url = new URL(`${requiredConfig.baseUrl}/api/lnauth/token`);
+      const url = new URL(`${requiredConfig.baseUrl}/api/pubkey/token`);
       const output = await handler({
         body: { grant_type: "authorization_code", code: k1 },
         cookies: {},
@@ -228,7 +228,7 @@ describe("token handler", () => {
   describe("grant type token ", () => {
     test("throws without refreshToken", async () => {
       const config = formatConfig({ ...requiredConfig }) as Config;
-      const url = new URL(`${requiredConfig.baseUrl}/api/lnauth/token`);
+      const url = new URL(`${requiredConfig.baseUrl}/api/pubkey/token`);
       const output = await handler({
         body: { grant_type: "refresh_token" },
         cookies: {},
@@ -243,7 +243,7 @@ describe("token handler", () => {
 
     test("triggers verifyRefreshToken", async () => {
       const config = formatConfig({ ...requiredConfig }) as Config;
-      const url = new URL(`${requiredConfig.baseUrl}/api/lnauth/token`);
+      const url = new URL(`${requiredConfig.baseUrl}/api/pubkey/token`);
       await handler({
         body: { grant_type: "refresh_token", refresh_token: refreshToken },
         cookies: {},

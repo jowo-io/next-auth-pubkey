@@ -29,8 +29,8 @@ export const colorSchemeDark: ThemeStyles = {
 
 export const defaultConfig: Partial<OptionalConfig> = {
   pages: {
-    lightningSignIn: "/api/lnauth/lightning-signin", // default lightning auth page
-    nostrSignIn: "/api/lnauth/nostr-signin", // default nostr auth page
+    lightningSignIn: "/api/pubkey/lightning-signin", // default lightning auth page
+    nostrSignIn: "/api/pubkey/nostr-signin", // default nostr auth page
     error: "/api/auth/error", // default next-auth error page
   },
   theme: {

@@ -1,7 +1,7 @@
-import NextAuthLightning from "next-auth-lightning-provider";
-import generateQr from "next-auth-lightning-provider/generators/qr";
-import generateName from "next-auth-lightning-provider/generators/name";
-import generateAvatar from "next-auth-lightning-provider/generators/avatar";
+import NextAuthLightning from "next-auth-pubkey-provider";
+import generateQr from "next-auth-pubkey-provider/generators/qr";
+import generateName from "next-auth-pubkey-provider/generators/name";
+import generateAvatar from "next-auth-pubkey-provider/generators/avatar";
 
 import storage from "node-persist"; // ⚠️ WARNING using node-persist is not recommended in lambda or edge environments.
 
@@ -38,8 +38,8 @@ const config = {
   },
 };
 
-const { provider, handler } = NextAuthLightning(config);
+const { lightningProvider, nostrProvider, handler } = NextAuthLightning(config);
 
-export const lightningProvider = provider;
+export { lightningProvider, nostrProvider };
 
 export default handler;

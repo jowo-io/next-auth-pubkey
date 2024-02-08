@@ -1,9 +1,9 @@
 import NextAuth from "next-auth";
 
-import { lightningProvider } from "../lnauth/[...lnauth].js";
+import { lightningProvider, nostrProvider } from "../pubkey/[...pubkey].js";
 
 export const authOptions = {
-  providers: [lightningProvider],
+  providers: [lightningProvider, nostrProvider],
 };
 
 export default NextAuth(authOptions);

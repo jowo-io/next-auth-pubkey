@@ -1,4 +1,4 @@
-// to enable this SSR sign in page, update the `config.signIn` options to `/nostr-signin-ssr` in the `/pages/api/lnauth/[...lnauth].ts` file
+// to enable this SSR sign in page, update the `config.signIn` options to `/nostr-signin-ssr` in the `/pages/api/pubkey/[...pubkey].ts` file
 
 import { GetServerSidePropsContext } from "next";
 import {

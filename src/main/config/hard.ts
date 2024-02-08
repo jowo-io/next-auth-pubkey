@@ -5,19 +5,19 @@ const idPrefix = "next-auth-pubkey-provider";
 export const hardConfig: HardConfig = {
   apis: {
     // apis
-    create: "/api/lnauth/create",
-    poll: "/api/lnauth/poll",
-    callback: "/api/lnauth/callback",
-    token: "/api/lnauth/token",
+    create: "/api/pubkey/create",
+    poll: "/api/pubkey/poll",
+    callback: "/api/pubkey/callback",
+    token: "/api/pubkey/token",
 
     // pages
-    lightningSignIn: "/api/lnauth/lightning-signin",
-    nostrSignIn: "/api/lnauth/nostr-signin",
+    lightningSignIn: "/api/pubkey/lightning-signin",
+    nostrSignIn: "/api/pubkey/nostr-signin",
 
     // misc
-    avatar: "/api/lnauth/avatar",
-    qr: "/api/lnauth/qr",
-    diagnostics: "/api/lnauth/diagnostics",
+    avatar: "/api/pubkey/avatar",
+    qr: "/api/pubkey/qr",
+    diagnostics: "/api/pubkey/diagnostics",
   },
   ids: {
     title: `${idPrefix}---title`,

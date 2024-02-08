@@ -72,12 +72,12 @@ openssl rand -base64 32
 
 ### API
 
-Create a new API route under `pages/api/lnauth/[...lnauth].ts`
+Create a new API route under `pages/api/pubkey/[...pubkey].ts`
 
 This API will handle all of the Lightning auth API requests, such as generating QRs, handling callbacks, polling and issuing JWT auth tokens.
 
 ```typescript
-// @/pages/api/lnauth/[...lnauth].ts
+// @/pages/api/pubkey/[...pubkey].ts
 
 import NextAuthLightning, {
   NextAuthLightningConfig,
@@ -130,7 +130,7 @@ In your existing `pages/api/auth/[...nextauth].ts` config file, import and add t
 ```typescript
 // @/pages/api/auth/[...nextauth].ts
 
-import { lightningProvider, nostrProvider } from "../lnauth/[...lnauth]"; // <--- import the providers from the lnauth API route
+import { lightningProvider, nostrProvider } from "../pubkey/[...pubkey]"; // <--- import the providers from the pubkey API route
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -161,7 +161,7 @@ import generateAvatar from "next-auth-pubkey-provider/generators/avatar";
 > Once you have configured the generator functions you can launch your dev server and test them locally on the diagnostics page:
 
 ```
-http://localhost:3000/api/lnauth/diagnostics
+http://localhost:3000/api/pubkey/diagnostics
 ```
 
 # Configuration
@@ -198,7 +198,7 @@ const config: NextAuthLightningConfig = {
    * Data can be stored in a medium of your choice.
    *
    * Once you have configured the storage functions you should test them on the diagnostics page:
-   * @see http://localhost:3000/api/lnauth/diagnostics
+   * @see http://localhost:3000/api/pubkey/diagnostics
    *
    * @see https://github.com/jowo-io/next-auth-pubkey-provider/tree/main/examples/
    */
@@ -288,7 +288,7 @@ const config: NextAuthLightningConfig = {
      * and
      * @see https://github.com/jowo-io/next-auth-pubkey-provider/tree/main/examples/ui-app-router/
      *
-     * @default "/api/lnauth/lightning-signin"
+     * @default "/api/pubkey/lightning-signin"
      */
     lightningSignIn: "/example-custom-lightning-signin",
 
@@ -305,7 +305,7 @@ const config: NextAuthLightningConfig = {
      * and
      * @see https://github.com/jowo-io/next-auth-pubkey-provider/tree/main/examples/ui-app-router/
      *
-     * @default "/api/lnauth/nostr-signin"
+     * @default "/api/pubkey/nostr-signin"
      */
     nostrSignIn: "/example-custom-nostr-signin",
 
@@ -374,7 +374,7 @@ const config: NextAuthLightningConfig = {
      * @param {string} diagnostics
      *
      * Toggle on / off the diagnostics page found at:
-     * http://localhost:3000/api/lnauth/diagnostics
+     * http://localhost:3000/api/pubkey/diagnostics
      *
      * @default enabled for development build only
      */
@@ -559,13 +559,13 @@ See more working examples in the [examples/](https://github.com/jowo-io/next-aut
 Once you have configured the storage functions you can launch your dev server and test them locally on the diagnostics page:
 
 ```
-http://localhost:3000/api/lnauth/diagnostics
+http://localhost:3000/api/pubkey/diagnostics
 ```
 
 On the diagnostic page you can optionally pass in your own custom session values via query param:
 
 ```
-http://localhost:3000/api/lnauth/diagnostics?k1=custom-k1&state=custom-state&pubkey=custom-pubkey&sig=custom-sig
+http://localhost:3000/api/pubkey/diagnostics?k1=custom-k1&state=custom-state&pubkey=custom-pubkey&sig=custom-sig
 ```
 
 > ℹ️ The diagnostics page will be **disabled** by default for production builds. To enable on production see the `flags` config options.

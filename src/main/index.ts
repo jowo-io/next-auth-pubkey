@@ -50,7 +50,7 @@ export interface PubKeyAuthProfile
  *
  * @returns {Object}
  * @returns {String} provider - a provider that can be added to the `next-auth` config's providerArray
- * @returns {String} handler - an API handler to be exported in the pages/api/lnauth/[...lnauth] folder
+ * @returns {String} handler - an API handler to be exported in the pages/api/pubkey/[...pubkey] folder
  */
 export default function NextAuthLightning(userConfig: UserConfig) {
   const config = formatConfig(userConfig);
@@ -113,7 +113,7 @@ export default function NextAuthLightning(userConfig: UserConfig) {
     },
   };
 
-  const dynamicHandler = async function lnAuthHandler<Req, Res, Return>(
+  const dynamicHandler = async function pubkeyHandler<Req, Res, Return>(
     req: Req,
     res: Res,
     handler: (

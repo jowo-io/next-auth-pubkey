@@ -58,7 +58,7 @@ describe("qr handler", () => {
     const output = await handler({
       query: {},
       cookies: {},
-      url: new URL(`${requiredConfig.baseUrl}/api/lnauth/qr/${k1}`),
+      url: new URL(`${requiredConfig.baseUrl}/api/pubkey/qr/${k1}`),
       config,
     });
     const expected = {
@@ -78,7 +78,7 @@ describe("qr handler", () => {
     const output = await handler({
       query: {},
       cookies: {},
-      url: new URL(`${requiredConfig.baseUrl}/api/lnauth/qr/${k1}`),
+      url: new URL(`${requiredConfig.baseUrl}/api/pubkey/qr/${k1}`),
       config,
     });
     const expected = {
@@ -100,7 +100,7 @@ describe("qr handler", () => {
     const output = await handler({
       query: {},
       cookies: {},
-      url: new URL(`${requiredConfig.baseUrl}/api/lnauth/qr/${k1}`),
+      url: new URL(`${requiredConfig.baseUrl}/api/pubkey/qr/${k1}`),
       config,
     });
     const expected = {
@@ -122,7 +122,7 @@ describe("qr handler", () => {
     const output = await handler({
       query: {},
       cookies: {},
-      url: new URL(`${requiredConfig.baseUrl}/api/lnauth/qr/${k1}`),
+      url: new URL(`${requiredConfig.baseUrl}/api/pubkey/qr/${k1}`),
       config,
     });
     const expected = {
@@ -143,7 +143,7 @@ describe("qr handler", () => {
     const output = await handler({
       query: {},
       cookies: {},
-      url: new URL(`${requiredConfig.baseUrl}/api/lnauth/qr/${k1}`),
+      url: new URL(`${requiredConfig.baseUrl}/api/pubkey/qr/${k1}`),
       config,
     });
     const expected = {
@@ -167,7 +167,7 @@ describe("qr handler", () => {
     const output = await handler({
       query: {},
       cookies: {},
-      url: new URL(`${requiredConfig.baseUrl}/api/lnauth/qr/${k1}`),
+      url: new URL(`${requiredConfig.baseUrl}/api/pubkey/qr/${k1}`),
       config,
     });
     const expected = {

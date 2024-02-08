@@ -56,7 +56,7 @@ describe("avatar handler", () => {
     const output = await handler({
       query: {},
       cookies: {},
-      url: new URL(`${requiredConfig.baseUrl}/api/lnauth/avatar/${pubkey}`),
+      url: new URL(`${requiredConfig.baseUrl}/api/pubkey/avatar/${pubkey}`),
       config,
     });
     const expected = {
@@ -76,7 +76,7 @@ describe("avatar handler", () => {
     const output = await handler({
       query: {},
       cookies: {},
-      url: new URL(`${requiredConfig.baseUrl}/api/lnauth/avatar/${pubkey}`),
+      url: new URL(`${requiredConfig.baseUrl}/api/pubkey/avatar/${pubkey}`),
       config,
     });
     const expected = {
@@ -98,7 +98,7 @@ describe("avatar handler", () => {
     const output = await handler({
       query: {},
       cookies: {},
-      url: new URL(`${requiredConfig.baseUrl}/api/lnauth/avatar/${pubkey}`),
+      url: new URL(`${requiredConfig.baseUrl}/api/pubkey/avatar/${pubkey}`),
       config,
     });
     const expected = {
@@ -120,7 +120,7 @@ describe("avatar handler", () => {
     const output = await handler({
       query: {},
       cookies: {},
-      url: new URL(`${requiredConfig.baseUrl}/api/lnauth/avatar/${pubkey}`),
+      url: new URL(`${requiredConfig.baseUrl}/api/pubkey/avatar/${pubkey}`),
       config,
     });
     const expected = {
@@ -141,7 +141,7 @@ describe("avatar handler", () => {
     const output = await handler({
       query: {},
       cookies: {},
-      url: new URL(`${requiredConfig.baseUrl}/api/lnauth/avatar/${pubkey}`),
+      url: new URL(`${requiredConfig.baseUrl}/api/pubkey/avatar/${pubkey}`),
       config,
     });
     const expected = {
@@ -165,7 +165,7 @@ describe("avatar handler", () => {
     const output = await handler({
       query: {},
       cookies: {},
-      url: new URL(`${requiredConfig.baseUrl}/api/lnauth/avatar/${pubkey}`),
+      url: new URL(`${requiredConfig.baseUrl}/api/pubkey/avatar/${pubkey}`),
       config,
     });
     const expected = {
