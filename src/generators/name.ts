@@ -11,7 +11,7 @@ import { NameGenerator } from "./types";
  * An async function that generates a username.
  *
  * @param {String} seed - the seed (the users pubkey)
- * @param {String} config - the `next-auth-lightning-provider` config object
+ * @param {String} config - the `next-auth-pubkey-provider` config object
  *
  * @returns {Object}
  * @returns {String} name - a deterministically generated username

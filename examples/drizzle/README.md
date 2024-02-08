@@ -4,9 +4,9 @@ This example uses the [Drizzle ORM](https://github.com/drizzle-team/drizzle-orm)
 
 ## Getting Started
 
-#### Building `next-auth-lightning-provider`
+#### Building `next-auth-pubkey-provider`
 
-Before you can run this example locally, you must clone and build `next-auth-lightning-provider`.
+Before you can run this example locally, you must clone and build `next-auth-pubkey-provider`.
 
 Essentially all that's required is running `npm i` and `npm run build` from the directory root.
 

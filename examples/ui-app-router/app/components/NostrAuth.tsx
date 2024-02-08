@@ -1,7 +1,7 @@
 "use client";
 
-import { useNostrExtension } from "next-auth-lightning-provider/hooks";
-import { NextAuthNostrClientSession } from "next-auth-lightning-provider/server";
+import { useNostrExtension } from "next-auth-pubkey-provider/hooks";
+import { NextAuthNostrClientSession } from "next-auth-pubkey-provider/server";
 
 export default function NostrAuth({
   session,

@@ -1,7 +1,7 @@
 "use client";
 
-import { useLightningPolling } from "next-auth-lightning-provider/hooks";
-import { NextAuthLightningClientSession } from "next-auth-lightning-provider/server";
+import { useLightningPolling } from "next-auth-pubkey-provider/hooks";
+import { NextAuthLightningClientSession } from "next-auth-pubkey-provider/server";
 
 export default function LightningAuth({
   session,

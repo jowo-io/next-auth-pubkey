@@ -1,6 +1,6 @@
 # TODO
 
-Below is a TODO list for further development of `next-auth-lightning-provider`.
+Below is a TODO list for further development of `next-auth-pubkey-provider`.
 
 ### Bugs
 

@@ -4,8 +4,8 @@ import { GetServerSidePropsContext } from "next";
 import {
   NextAuthNostrClientSession,
   createNostrAuth,
-} from "next-auth-lightning-provider/server";
-import { useNostrExtension } from "next-auth-lightning-provider/hooks";
+} from "next-auth-pubkey-provider/server";
+import { useNostrExtension } from "next-auth-pubkey-provider/hooks";
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext

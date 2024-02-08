@@ -2,11 +2,11 @@
 >
 > This project is currently in beta. A stable release will land by February 2024.
 >
-> If you encounter any issues during installation and configuration, or in development and production environments, it'd be greatly appreciated if you report them [here](https://github.com/jowo-io/next-auth-lightning-provider/issues).
+> If you encounter any issues during installation and configuration, or in development and production environments, it'd be greatly appreciated if you report them [here](https://github.com/jowo-io/next-auth-pubkey-provider/issues).
 
 # About
 
-A light-weight Lightning auth provider for your Next.js app that's entirely self-hosted and plugs seamlessly into the [next-auth](https://github.com/nextauthjs/next-auth) framework.
+A light-weight Lightning and Nostr auth provider for your Next.js app that's entirely self-hosted and plugs seamlessly into the [next-auth](https://github.com/nextauthjs/next-auth) framework.
 
 > ℹ️ This package is built for Next.js apps that use [next-auth](https://github.com/nextauthjs/next-auth). It's not compatible with other authentication libraries.
 
@@ -16,9 +16,9 @@ Install the package, add two code snippets to your app (as shown below). It's th
 
 Your users will then be shown an additional authentication option in the provider list on the `next-auth` sign in page. When they click the new option they'll be presented with a QR code. The QR code can be scanned with any Bitcoin Lightning wallet that supports [lnurl-auth](https://fiatjaf.com/e0a35204.html). After scanning, they'll be securely logged in! No usernames, no passwords and no third party providers required.
 
-The `next-auth-lightning-provider` package extends `lnurl-auth` by wrapping it in an OAuth API. `lnurl-auth` is used to authenticate your users, and OAuth is wrapped around it to make integration with `next-auth` seamless.
+The `next-auth-pubkey-provider` package extends `lnurl-auth` by wrapping it in an OAuth API. `lnurl-auth` is used to authenticate your users, and OAuth is wrapped around it to make integration with `next-auth` seamless.
 
-As well as providing the basic authentication functionality that you'd expect, `next-auth-lightning-provider` also offers some extra functionality, such as deterministically generating avatars and usernames for authenticated users! (These extra features can be disabled if not required)
+As well as providing the basic authentication functionality that you'd expect, `next-auth-pubkey-provider` also offers some extra functionality, such as deterministically generating avatars and usernames for authenticated users! (These extra features can be disabled if not required)
 
 # Compatibility
 
@@ -41,7 +41,7 @@ As well as providing the basic authentication functionality that you'd expect, `
 ### Install
 
 ```bash
-npm i next-auth-lightning-provider
+npm i next-auth-pubkey-provider
 ```
 
 ### .env
@@ -81,10 +81,10 @@ This API will handle all of the Lightning auth API requests, such as generating 
 
 import NextAuthLightning, {
   NextAuthLightningConfig,
-} from "next-auth-lightning-provider";
-import generateQr from "next-auth-lightning-provider/generators/qr";
-import generateName from "next-auth-lightning-provider/generators/name";
-import generateAvatar from "next-auth-lightning-provider/generators/avatar";
+} from "next-auth-pubkey-provider";
+import generateQr from "next-auth-pubkey-provider/generators/qr";
+import generateName from "next-auth-pubkey-provider/generators/name";
+import generateAvatar from "next-auth-pubkey-provider/generators/avatar";
 
 const config: NextAuthLightningConfig = {
   // required
@@ -121,7 +121,7 @@ export { lightningProvider, nostrProvider };
 export default handler;
 ```
 
-> ℹ️ The above example uses the Pages Router. If your app uses the App Router then take a look at the [examples/app-router/](https://github.com/jowo-io/next-auth-lightning-provider/tree/main/examples/app-router/) example app.
+> ℹ️ The above example uses the Pages Router. If your app uses the App Router then take a look at the [examples/app-router/](https://github.com/jowo-io/next-auth-pubkey-provider/tree/main/examples/app-router/) example app.
 
 ### Provider
 
@@ -144,16 +144,16 @@ export default NextAuth(authOptions);
 
 # Generators
 
-If you were to authenticate a user with only `lnurl-auth`, all you'd know about them is their unique ID (a `pubkey`). The `next-auth-lightning-provider` package goes a step further and provides several generator functions that can be used to deterministically (the `pubkey` is used as a seed) generate avatars and usernames. This means you can show users a unique name and image that'll be associated with their account!
+If you were to authenticate a user with only `lnurl-auth`, all you'd know about them is their unique ID (a `pubkey`). The `next-auth-pubkey-provider` package goes a step further and provides several generator functions that can be used to deterministically (the `pubkey` is used as a seed) generate avatars and usernames. This means you can show users a unique name and image that'll be associated with their account!
 
 As well as the avatar and image generators, there's also a QR code generator.
 
 The generators are tree-shakeable. If you don't need them, simply don't import them and they'll not be included in your app's bundle.
 
 ```typescript
-import generateQr from "next-auth-lightning-provider/generators/qr";
-import generateName from "next-auth-lightning-provider/generators/name";
-import generateAvatar from "next-auth-lightning-provider/generators/avatar";
+import generateQr from "next-auth-pubkey-provider/generators/qr";
+import generateName from "next-auth-pubkey-provider/generators/name";
+import generateAvatar from "next-auth-pubkey-provider/generators/avatar";
 ```
 
 > ℹ️ You can write your own generator functions if those provided don't suit your needs!
@@ -200,7 +200,7 @@ const config: NextAuthLightningConfig = {
    * Once you have configured the storage functions you should test them on the diagnostics page:
    * @see http://localhost:3000/api/lnauth/diagnostics
    *
-   * @see https://github.com/jowo-io/next-auth-lightning-provider/tree/main/examples/
+   * @see https://github.com/jowo-io/next-auth-pubkey-provider/tree/main/examples/
    */
   storage: {
     /**
@@ -258,7 +258,7 @@ const config: NextAuthLightningConfig = {
    * It must return a base64 encoded png/jpg OR svg XML markup.
    *
    * A default QR code generator is provided. It can be imported from:
-   * import generateQr from "next-auth-lightning-provider/generators/qr";
+   * import generateQr from "next-auth-pubkey-provider/generators/qr";
    *
    * the default library used is:
    * @see https://www.npmjs.com/package/qrcode
@@ -284,9 +284,9 @@ const config: NextAuthLightningConfig = {
      *
      * @note the path must begin with a leading `/`. For example, `/signin`, not `signin`.
      *
-     * @see https://github.com/jowo-io/next-auth-lightning-provider/tree/main/examples/ui-pages-router/
+     * @see https://github.com/jowo-io/next-auth-pubkey-provider/tree/main/examples/ui-pages-router/
      * and
-     * @see https://github.com/jowo-io/next-auth-lightning-provider/tree/main/examples/ui-app-router/
+     * @see https://github.com/jowo-io/next-auth-pubkey-provider/tree/main/examples/ui-app-router/
      *
      * @default "/api/lnauth/lightning-signin"
      */
@@ -301,9 +301,9 @@ const config: NextAuthLightningConfig = {
      *
      * @note the path must begin with a leading `/`. For example, `/signin`, not `signin`.
      *
-     * @see https://github.com/jowo-io/next-auth-lightning-provider/tree/main/examples/ui-pages-router/
+     * @see https://github.com/jowo-io/next-auth-pubkey-provider/tree/main/examples/ui-pages-router/
      * and
-     * @see https://github.com/jowo-io/next-auth-lightning-provider/tree/main/examples/ui-app-router/
+     * @see https://github.com/jowo-io/next-auth-pubkey-provider/tree/main/examples/ui-app-router/
      *
      * @default "/api/lnauth/nostr-signin"
      */
@@ -318,9 +318,9 @@ const config: NextAuthLightningConfig = {
      *
      * @note the path must begin with a leading `/`. For example, `/error`, not `error`.
      *
-     * @see https://github.com/jowo-io/next-auth-lightning-provider/tree/main/examples/ui-pages-router/
+     * @see https://github.com/jowo-io/next-auth-pubkey-provider/tree/main/examples/ui-pages-router/
      * and
-     * @see https://github.com/jowo-io/next-auth-lightning-provider/tree/main/examples/ui-app-router/
+     * @see https://github.com/jowo-io/next-auth-pubkey-provider/tree/main/examples/ui-app-router/
      *
      * @default "/api/auth/error"
      */
@@ -334,7 +334,7 @@ const config: NextAuthLightningConfig = {
    * It must return a base64 encoded png/jpg OR svg XML markup.
    *
    * A default avatar generator is provided. It can be imported from:
-   * import generateAvatar from "next-auth-lightning-provider/generators/avatar";
+   * import generateAvatar from "next-auth-pubkey-provider/generators/avatar";
    *
    * The default avatar generation library that's used is dicebear's bottts style.
    * @see https://www.dicebear.com/styles/bottts/
@@ -355,7 +355,7 @@ const config: NextAuthLightningConfig = {
    * Define the deterministic name generator.
    *
    * A default name generator is provided. It can be imported from:
-   * import generateName from "next-auth-lightning-provider/generators/name";
+   * import generateName from "next-auth-pubkey-provider/generators/name";
    *
    * The default name generation library used is `unique-names-generator`
    * @see https://www.npmjs.com/package/unique-names-generator
@@ -554,7 +554,7 @@ const config: NextAuthLightningConfig = {
 };
 ```
 
-See more working examples in the [examples/](https://github.com/jowo-io/next-auth-lightning-provider/tree/main/examples) folder.
+See more working examples in the [examples/](https://github.com/jowo-io/next-auth-pubkey-provider/tree/main/examples) folder.
 
 Once you have configured the storage functions you can launch your dev server and test them locally on the diagnostics page:
 
@@ -608,23 +608,23 @@ With the release of `next@v13` comes the App Router.
 
 This package supports both the [Pages Router](https://nextjs.org/docs/pages) and the [App Router](https://nextjs.org/docs/app).
 
-If your app uses the App Router, see the [examples/app-router/](https://github.com/jowo-io/next-auth-lightning-provider/tree/main/examples/app-router/) app.
+If your app uses the App Router, see the [examples/app-router/](https://github.com/jowo-io/next-auth-pubkey-provider/tree/main/examples/app-router/) app.
 
-If your app uses the Pages Router, see the other apps in the [examples/](https://github.com/jowo-io/next-auth-lightning-provider/tree/main/examples/) folder.
+If your app uses the Pages Router, see the other apps in the [examples/](https://github.com/jowo-io/next-auth-pubkey-provider/tree/main/examples/) folder.
 
 # Examples
 
-See working examples in the [examples/](https://github.com/jowo-io/next-auth-lightning-provider/tree/main/examples) folder.
+See working examples in the [examples/](https://github.com/jowo-io/next-auth-pubkey-provider/tree/main/examples) folder.
 
 # Diagram
 
 Here's a diagram illustrating what's happening under the hood during the Lightning OAuth authorization flow:
 
-![diagram of Lightning OAuth authorization flow](https://github.com/jowo-io/next-auth-lightning-provider/blob/main/diagram.jpeg?raw=true)
+![diagram of Lightning OAuth authorization flow](https://github.com/jowo-io/next-auth-pubkey-provider/blob/main/diagram.jpeg?raw=true)
 
 # Contributing
 
-If you would like to contribute to this project, please open an [issue](https://github.com/jowo-io/next-auth-lightning-provider/issues) before making a pull request.
+If you would like to contribute to this project, please open an [issue](https://github.com/jowo-io/next-auth-pubkey-provider/issues) before making a pull request.
 
 # Sponsors
 

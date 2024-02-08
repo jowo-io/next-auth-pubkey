@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-import { ErrorCodes } from "next-auth-lightning-provider";
+import { ErrorCodes } from "next-auth-pubkey-provider";
 
 function formatErrorCode(
   value: string | string[] | undefined

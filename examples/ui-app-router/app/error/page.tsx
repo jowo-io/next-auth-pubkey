@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { ErrorCodes } from "next-auth-lightning-provider";
+import { ErrorCodes } from "next-auth-pubkey-provider";
 
 function formatErrorCode(value: string | null): keyof typeof ErrorCodes {
   if (Array.isArray(value)) value = value[0];

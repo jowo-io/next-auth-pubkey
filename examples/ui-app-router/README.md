@@ -17,7 +17,7 @@ This example demonstrates implementing a custom Lightning auth page UI.
 
 import LightningAuth from "@/app/components/LightningAuth";
 
-import { createLightningAuth } from "next-auth-lightning-provider/server";
+import { createLightningAuth } from "next-auth-pubkey-provider/server";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -51,8 +51,8 @@ export default async function SignIn({
 
 "use client";
 
-import { useLightningPolling } from "next-auth-lightning-provider/hooks";
-import { NextAuthLightningClientSession } from "next-auth-lightning-provider/server";
+import { useLightningPolling } from "next-auth-pubkey-provider/hooks";
+import { NextAuthLightningClientSession } from "next-auth-pubkey-provider/server";
 
 export default function LightningAuth({
   session,
@@ -78,9 +78,9 @@ export default function LightningAuth({
 
 ## Getting Started
 
-#### Building `next-auth-lightning-provider`
+#### Building `next-auth-pubkey-provider`
 
-Before you can run this example locally, you must clone and build `next-auth-lightning-provider`.
+Before you can run this example locally, you must clone and build `next-auth-pubkey-provider`.
 
 Essentially all that's required is running `npm i` and `npm run build` from the directory root.
 

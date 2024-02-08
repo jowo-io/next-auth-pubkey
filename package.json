@@ -1,17 +1,17 @@
 {
-  "name": "next-auth-lightning-provider",
-  "version": "1.0.0-beta.3",
+  "name": "next-auth-pubkey-provider",
+  "version": "0.0.1",
   "type": "module",
-  "description": "A light-weight Lightning auth provider for your Next.js app that's entirely self-hosted and plugs seamlessly into the next-auth framework.",
+  "description": "A light-weight Lightning and Nostr auth provider for your Next.js app that's entirely self-hosted and plugs seamlessly into the next-auth framework.",
   "license": "ISC",
-  "homepage": "https://github.com/jowo-io/next-auth-lightning-provider/",
+  "homepage": "https://github.com/jowo-io/next-auth-pubkey-provider/",
   "bugs": {
-    "url": "https://github.com/jowo-io/next-auth-lightning-provider/issues"
+    "url": "https://github.com/jowo-io/next-auth-pubkey-provider/issues"
   },
   "author": "Jowo <me@jowo.io>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jowo-io/next-auth-lightning-provider.git"
+    "url": "git+https://github.com/jowo-io/next-auth-pubkey-provider.git"
   },
   "contributors": [],
   "keywords": [
@@ -25,6 +25,9 @@
     "nextauth",
     "lightning",
     "lightning-network",
+    "nostr",
+    "pubkey",
+    "npub",
     "bitcoin",
     "lnurl",
     "lnurl-auth"

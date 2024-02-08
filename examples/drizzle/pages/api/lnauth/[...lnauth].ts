@@ -1,9 +1,9 @@
 import NextAuthLightning, {
   NextAuthLightningConfig,
-} from "next-auth-lightning-provider";
-import generateQr from "next-auth-lightning-provider/generators/qr";
-import generateName from "next-auth-lightning-provider/generators/name";
-import generateAvatar from "next-auth-lightning-provider/generators/avatar";
+} from "next-auth-pubkey-provider";
+import generateQr from "next-auth-pubkey-provider/generators/qr";
+import generateName from "next-auth-pubkey-provider/generators/name";
+import generateAvatar from "next-auth-pubkey-provider/generators/avatar";
 
 import { eq } from "drizzle-orm";
 
