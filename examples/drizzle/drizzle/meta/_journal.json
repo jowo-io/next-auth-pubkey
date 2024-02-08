@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1707419724757,
+      "tag": "0000_neat_christian_walker",
+      "breakpoints": true
+    }
+  ]
+}

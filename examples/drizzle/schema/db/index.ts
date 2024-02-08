@@ -1,1 +1,1 @@
-export * from "./lnauth";
+export * from "./pubkey";

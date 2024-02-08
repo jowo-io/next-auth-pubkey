@@ -7,8 +7,8 @@ import {
   timestamp,
 } from "drizzle-orm/mysql-core";
 
-export const lnAuthTable = mysqlTable(
-  "lnauth",
+export const pubkeyTable = mysqlTable(
+  "pubkey",
   {
     id: int("id").primaryKey().autoincrement().notNull(),
     state: varchar("state", { length: 255 }).notNull(),
@@ -19,11 +19,11 @@ export const lnAuthTable = mysqlTable(
     createdAt: timestamp("createdAt").defaultNow().notNull(),
     updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   },
-  (lnAuth) => ({
-    stateIndex: index("lnauth__state__idx").on(lnAuth.state),
-    k1Index: index("lnauth__k1__idx").on(lnAuth.k1),
+  (pubkey) => ({
+    stateIndex: index("pubkey__state__idx").on(pubkey.state),
+    k1Index: index("pubkey__k1__idx").on(pubkey.k1),
   })
 );
 
-export type LnAuth = typeof lnAuthTable.$inferSelect;
-export type NewLnAuth = typeof lnAuthTable.$inferInsert;
+export type PubKey = typeof pubkeyTable.$inferSelect;
+export type NewPubKey = typeof pubkeyTable.$inferInsert;
