@@ -1,7 +1,7 @@
 import { randomBytes } from "crypto";
 import lnurlEncode from "lnurl/lib/encode.js";
 
-import { createValidation } from "../validation/lnauth";
+import { createValidation } from "../validation/api";
 import { HandlerArguments, HandlerReturn } from "../utils/handlers";
 
 export default async function handler({

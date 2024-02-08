@@ -6,7 +6,7 @@ import { vanilla } from "../utils/vanilla-lightning";
 import { LightningAuth } from "../components/LightningAuth";
 import { Loading } from "../components/Loading";
 import { HandlerArguments, HandlerReturn } from "../utils/handlers";
-import { signInValidation } from "../validation/lnauth";
+import { signInValidation } from "../validation/api";
 
 function LightningAuthPage({
   title,

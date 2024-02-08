@@ -1,14 +1,13 @@
 import { describe, expect, test } from "@jest/globals";
 import { ZodObject } from "zod";
-import merge from "lodash.merge";
 
 import {
-  callbackValidation,
+  callbackQueryValidation,
   createValidation,
   signInValidation,
   pollValidation,
   tokenValidation,
-} from "./lnauth";
+} from "./api";
 
 function parse(zod: ZodObject<any>, input: any) {
   try {
@@ -21,7 +20,7 @@ function parse(zod: ZodObject<any>, input: any) {
   return [];
 }
 
-describe("callbackValidation", () => {
+describe("callbackQueryValidation", () => {
   test("throws when empty", () => {
     const input = {};
     const expected: any = [
@@ -47,20 +46,20 @@ describe("callbackValidation", () => {
         received: "undefined",
       },
     ];
-    const output = parse(callbackValidation, input);
+    const output = parse(callbackQueryValidation, input);
     expect(output).toEqual(expected);
   });
   test("passes when valid", () => {
     const input = { k1: "k1", key: "key", sig: "sig" };
     const expected: any = [];
-    const output = parse(callbackValidation, input);
+    const output = parse(callbackQueryValidation, input);
     expect(output).toEqual(expected);
   });
 
   test("passes when not strict", () => {
     const input = { k1: "k1", key: "key", sig: "sig", foo: "bar" };
     const expected: any = [];
-    const output = parse(callbackValidation, input);
+    const output = parse(callbackQueryValidation, input);
     expect(output).toEqual(expected);
   });
 });

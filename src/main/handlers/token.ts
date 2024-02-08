@@ -1,4 +1,4 @@
-import { tokenValidation } from "../validation/lnauth";
+import { tokenValidation } from "../validation/api";
 import {
   generateIdToken,
   generateRefreshToken,

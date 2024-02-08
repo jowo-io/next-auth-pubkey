@@ -1,7 +1,7 @@
 import {
   callbackQueryValidation,
   callbackBodyValidation,
-} from "../validation/lnauth";
+} from "../validation/api";
 import { HandlerArguments, HandlerReturn } from "../utils/handlers";
 import lnurlVerifyAuthorizationSignature from "lnurl/lib/verifyAuthorizationSignature.js";
 import { createHash } from "crypto";

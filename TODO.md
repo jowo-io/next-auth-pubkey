@@ -12,6 +12,7 @@ Below is a TODO list for further development of `next-auth-pubkey-provider`.
 
 ### Beta
 
+- add missing tests
 - manual testing
   - test node, next, next-auth versions for compatibility (including deployed)
   - test all user configuration options

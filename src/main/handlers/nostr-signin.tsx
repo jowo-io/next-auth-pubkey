@@ -6,7 +6,7 @@ import { vanilla } from "../utils/vanilla-nostr";
 import { NostrAuth } from "../components/NostrAuth";
 import { Loading } from "../components/Loading";
 import { HandlerArguments, HandlerReturn } from "../utils/handlers";
-import { signInValidation } from "../validation/lnauth";
+import { signInValidation } from "../validation/api";
 
 function NostrAuthPage({ title, config }: { title: string; config: Config }) {
   return (

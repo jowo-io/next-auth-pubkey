@@ -1,4 +1,4 @@
-import { pollValidation } from "../validation/lnauth";
+import { pollValidation } from "../validation/api";
 import { HandlerArguments, HandlerReturn } from "../utils/handlers";
 
 export default async function handler({
