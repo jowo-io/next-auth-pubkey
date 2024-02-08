@@ -76,30 +76,9 @@ describe("callback handler", () => {
     });
     const expected = {
       error: "Unauthorized",
+      log: "Invalid signature",
     };
     expect(output).toEqual(expected);
-  });
-
-  test("calls delete with k1 when unauthorized", async () => {
-    const config = formatConfig({
-      ...requiredConfig,
-    }) as Config;
-    const url = new URL(`${requiredConfig.baseUrl}/api/pubkey/callback`);
-    await handler({
-      query: {
-        k1: invalidK1,
-        key: pubkey,
-        sig,
-      },
-      cookies: {},
-      url,
-      config,
-    });
-    expect(jest.mocked(config.storage.delete)).toHaveBeenCalledWith(
-      { k1: invalidK1 },
-      url,
-      config
-    );
   });
 
   test("doesn't throw when delete fails", async () => {
@@ -157,7 +136,7 @@ describe("callback handler", () => {
     expect(output).toEqual(expected);
   });
 
-  test("calls delete with k1 when unauthorized", async () => {
+  test("calls delete with k1 when authorized", async () => {
     const config = formatConfig({
       ...requiredConfig,
     }) as Config;

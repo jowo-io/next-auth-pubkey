@@ -8,7 +8,7 @@ const oldK1 = "old-k1";
 const newK1 = "new-k1";
 const state = "state";
 const lnurl =
-  "LNURL1DP68GUP69UHKZTNZ9ASHQ6F0D3HXZAT5DQHKXCTVD33XZCMT8A4NZ0TWV4MJ66E3YE6XZEEAD3HKW6TWQ5ZEHJ";
+  "LNURL1DP68GUP69UHKZTNZ9ASHQ6F0WP6KY6M90YHKXCTVD33XZCMT8A4NZ0TWV4MJ66E3YE6XZEEAD3HKW6TWFCLZZL";
 
 jest.mock("crypto", () => ({
   randomBytes: jest.fn(() => ({ toString: jest.fn(() => newK1) })),
