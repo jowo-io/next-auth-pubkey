@@ -1,6 +1,6 @@
 import NostrAuth from "@/app/components/NostrAuth";
 
-import { createNostrAuth } from "next-auth-pubkey-provider/server";
+import { createNostrAuth } from "next-auth-pubkey/server";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;

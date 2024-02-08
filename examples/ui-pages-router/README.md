@@ -18,7 +18,7 @@ This example demonstrates implementing a custom Lightning auth page UI.
 // @see pages/signin.tsx for working example
 
 import { useSession } from "next-auth/react";
-import { useLightningAuth } from "next-auth-pubkey-provider/hooks";
+import { useLightningAuth } from "next-auth-pubkey/hooks";
 
 export default function SignIn() {
   const session = useSession();
@@ -52,8 +52,8 @@ import { GetServerSidePropsContext } from "next";
 import {
   NextAuthLightningClientSession,
   createLightningAuth,
-} from "next-auth-pubkey-provider/server";
-import { useLightningPolling } from "next-auth-pubkey-provider/hooks";
+} from "next-auth-pubkey/server";
+import { useLightningPolling } from "next-auth-pubkey/hooks";
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
@@ -105,9 +105,9 @@ export default function SignInPage({
 
 ## Getting Started
 
-#### Building `next-auth-pubkey-provider`
+#### Building `next-auth-pubkey`
 
-Before you can run this example locally, you must clone and build `next-auth-pubkey-provider`.
+Before you can run this example locally, you must clone and build `next-auth-pubkey`.
 
 Essentially all that's required is running `npm i` and `npm run build` from the directory root.
 

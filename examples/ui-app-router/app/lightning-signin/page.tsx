@@ -1,6 +1,6 @@
 import LightningAuth from "@/app/components/LightningAuth";
 
-import { createLightningAuth } from "next-auth-pubkey-provider/server";
+import { createLightningAuth } from "next-auth-pubkey/server";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;

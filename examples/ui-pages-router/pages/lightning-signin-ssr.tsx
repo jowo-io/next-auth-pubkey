@@ -4,8 +4,8 @@ import { GetServerSidePropsContext } from "next";
 import {
   NextAuthLightningClientSession,
   createLightningAuth,
-} from "next-auth-pubkey-provider/server";
-import { useLightningPolling } from "next-auth-pubkey-provider/hooks";
+} from "next-auth-pubkey/server";
+import { useLightningPolling } from "next-auth-pubkey/hooks";
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext

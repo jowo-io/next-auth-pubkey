@@ -16,7 +16,7 @@
     "mysql2": "^3.6.0",
     "next": "^14.0.1",
     "next-auth": "^4.24.4",
-    "next-auth-pubkey-provider": "file:../../",
+    "next-auth-pubkey": "file:../../",
     "react": "18.2.0",
     "zod": "^3.22.2"
   },

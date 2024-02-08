@@ -1,9 +1,7 @@
-import NextAuthLightning, {
-  NextAuthLightningConfig,
-} from "next-auth-pubkey-provider";
-import generateQr from "next-auth-pubkey-provider/generators/qr";
-import generateName from "next-auth-pubkey-provider/generators/name";
-import generateAvatar from "next-auth-pubkey-provider/generators/avatar";
+import NextAuthLightning, { NextAuthLightningConfig } from "next-auth-pubkey";
+import generateQr from "next-auth-pubkey/generators/qr";
+import generateName from "next-auth-pubkey/generators/name";
+import generateAvatar from "next-auth-pubkey/generators/avatar";
 
 import { env } from "@/env.mjs";
 

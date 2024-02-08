@@ -104,7 +104,7 @@ export async function pagesHandler(
       // if using default next-auth error screen
       errorUrl.searchParams.append("error", "OAuthSignin");
     } else {
-      // otherwise use `next-auth-pubkey-provider` params
+      // otherwise use `next-auth-pubkey` params
       errorUrl.searchParams.append("error", output.error);
       errorUrl.searchParams.append("message", HandlerErrorCodes[output.error]);
     }
@@ -192,7 +192,7 @@ export async function appHandler(
       // if using default next-auth error screen
       errorUrl.searchParams.append("error", "OAuthSignin");
     } else {
-      // otherwise use `next-auth-pubkey-provider` params
+      // otherwise use `next-auth-pubkey` params
       errorUrl.searchParams.append("error", output.error);
       errorUrl.searchParams.append("message", HandlerErrorCodes[output.error]);
     }

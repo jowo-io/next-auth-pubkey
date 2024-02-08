@@ -1,7 +1,7 @@
 "use client";
 
-import { useNostrExtension } from "next-auth-pubkey-provider/hooks";
-import { NextAuthNostrClientSession } from "next-auth-pubkey-provider/server";
+import { useNostrExtension } from "next-auth-pubkey/hooks";
+import { NextAuthNostrClientSession } from "next-auth-pubkey/server";
 
 export default function NostrAuth({
   session,

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-import { ErrorCodes } from "next-auth-pubkey-provider";
+import { ErrorCodes } from "next-auth-pubkey";
 
 function formatErrorCode(
   value: string | string[] | undefined

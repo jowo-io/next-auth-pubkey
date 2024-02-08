@@ -1,6 +1,6 @@
 ## About
 
-This example demonstrates how to configure `next-auth-pubkey-provider` in a plain JavaScript app (without TypeScript).
+This example demonstrates how to configure `next-auth-pubkey` in a plain JavaScript app (without TypeScript).
 
 > ⚠️ WARNING using `node-persist` is not recommended in lambda or edge environments.
 >
@@ -12,9 +12,9 @@ This example demonstrates how to configure `next-auth-pubkey-provider` in a plai
 
 ## Getting Started
 
-#### Building `next-auth-pubkey-provider`
+#### Building `next-auth-pubkey`
 
-Before you can run this example locally, you must clone and build `next-auth-pubkey-provider`.
+Before you can run this example locally, you must clone and build `next-auth-pubkey`.
 
 Essentially all that's required is running `npm i` and `npm run build` from the directory root.
 

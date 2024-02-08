@@ -1,5 +1,5 @@
 import { useSession } from "next-auth/react";
-import { useNostrAuth } from "next-auth-pubkey-provider/hooks";
+import { useNostrAuth } from "next-auth-pubkey/hooks";
 
 export default function SignIn() {
   const session = useSession();

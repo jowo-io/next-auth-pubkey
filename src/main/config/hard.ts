@@ -1,6 +1,6 @@
 import { HardConfig } from "./types";
 
-const idPrefix = "next-auth-pubkey-provider";
+const idPrefix = "next-auth-pubkey";
 
 export const hardConfig: HardConfig = {
   apis: {

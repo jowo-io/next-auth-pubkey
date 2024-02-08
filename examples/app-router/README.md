@@ -1,6 +1,6 @@
 ## About
 
-This example demonstrates configuring `next-auth-pubkey-provider` using the Next.js App Router.
+This example demonstrates configuring `next-auth-pubkey` using the Next.js App Router.
 
 > ⚠️ WARNING using `node-persist` is not recommended in lambda or edge environments.
 >
@@ -12,9 +12,9 @@ This example demonstrates configuring `next-auth-pubkey-provider` using the Next
 
 ## Getting Started
 
-#### Building `next-auth-pubkey-provider`
+#### Building `next-auth-pubkey`
 
-Before you can run this example locally, you must clone and build `next-auth-pubkey-provider`.
+Before you can run this example locally, you must clone and build `next-auth-pubkey`.
 
 Essentially all that's required is running `npm i` and `npm run build` from the directory root.
 
