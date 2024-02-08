@@ -13,7 +13,8 @@ export type HardConfig = {
     token: string;
 
     // pages
-    signIn: string;
+    nostrSignIn: string;
+    lightningSignIn: string;
 
     // misc
     avatar: string;
@@ -27,6 +28,8 @@ export type HardConfig = {
     copy: string;
     button: string;
     loading: string;
+    error: string;
+    details: string;
   };
   intervals: {
     refreshToken: number;
@@ -100,10 +103,10 @@ export type ThemeStyles = {
 
 export type OptionalConfig = {
   pages: Partial<{
-    signIn: string;
+    nostrSignIn: string;
+    lightningSignIn: string;
     error: string;
   }>;
-  title: string | null;
   generateAvatar: AvatarGenerator | null;
   generateName: NameGenerator | null;
   flags: {

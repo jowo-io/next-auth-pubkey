@@ -16,7 +16,6 @@ export const lnAuthTable = mysqlTable(
     pubkey: varchar("pubkey", { length: 255 }),
     sig: varchar("sig", { length: 255 }),
     success: boolean("success").default(false).notNull(),
-    successAt: timestamp("successAt"),
     createdAt: timestamp("createdAt").defaultNow().notNull(),
     updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   },

@@ -52,7 +52,6 @@ describe("formatConfig", () => {
         diagnostics: true,
         logs: true,
       },
-      title: "Foo bar",
       theme: {
         colorScheme: "dark",
         background: "#f0f",
@@ -84,7 +83,6 @@ describe("formatConfig", () => {
           diagnostics: true,
           logs: true,
         },
-        title: "Foo bar",
         theme: {
           colorScheme: "dark",
           background: "#f0f",

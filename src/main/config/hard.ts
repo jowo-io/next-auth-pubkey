@@ -11,7 +11,8 @@ export const hardConfig: HardConfig = {
     token: "/api/lnauth/token",
 
     // pages
-    signIn: "/api/lnauth/signin",
+    lightningSignIn: "/api/lnauth/lightning-signin",
+    nostrSignIn: "/api/lnauth/nostr-signin",
 
     // misc
     avatar: "/api/lnauth/avatar",
@@ -25,6 +26,8 @@ export const hardConfig: HardConfig = {
     button: `${idPrefix}---button`,
     loading: `${idPrefix}---loading`,
     wrapper: `${idPrefix}---wrapper`,
+    error: `${idPrefix}---error`,
+    details: `${idPrefix}---details`,
   },
   intervals: {
     refreshToken: 30 * 24 * 60 * 60, // seconds

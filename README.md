@@ -275,10 +275,10 @@ const config: NextAuthLightningConfig = {
   // optional
   pages: {
     /**
-     * @param {string} signIn
+     * @param {string} lightningSignIn
      *
      * A Lightning auth page will be automatically generated unless the
-     * `signIn` path is specified. It lets you define your own page where
+     * `lightningSignIn` path is specified. It lets you define your own page where
      * you can configure a custom Next.js page and customize the UI.
      *
      * @note the path must begin with a leading `/`. For example, `/signin`, not `signin`.
@@ -287,9 +287,26 @@ const config: NextAuthLightningConfig = {
      * and
      * @see https://github.com/jowo-io/next-auth-lightning-provider/tree/main/examples/ui-app-router/
      *
-     * @default "/api/lnauth/signin"
+     * @default "/api/lnauth/lightning-signin"
      */
-    signIn: "/example-custom-signin",
+    lightningSignIn: "/example-custom-lightning-signin",
+
+    /**
+     * @param {string} nostrSignIn
+     *
+     * A Lightning auth page will be automatically generated unless the
+     * `nostrSignIn` path is specified. It lets you define your own page where
+     * you can configure a custom Next.js page and customize the UI.
+     *
+     * @note the path must begin with a leading `/`. For example, `/signin`, not `signin`.
+     *
+     * @see https://github.com/jowo-io/next-auth-lightning-provider/tree/main/examples/ui-pages-router/
+     * and
+     * @see https://github.com/jowo-io/next-auth-lightning-provider/tree/main/examples/ui-app-router/
+     *
+     * @default "/api/lnauth/nostr-signin"
+     */
+    nostrSignIn: "/example-custom-nostr-signin",
 
     /**
      * @param {string} error
@@ -308,16 +325,6 @@ const config: NextAuthLightningConfig = {
      */
     error: "/example-custom-error",
   },
-
-  /**
-   * @param {string | null} title
-   *
-   * Override the default title shown above the QR code in the
-   * Lighting auth page. Or, it can be set to null to hide the title.
-   *
-   * @default "Login with Lightning"
-   */
-  title: "Your custom title",
 
   /**
    * @param {function} generateAvatar

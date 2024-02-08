@@ -1,25 +1,23 @@
 import { CSSProperties } from "preact/compat";
 
 import { Title } from "./Title";
-import { QrCode } from "./QrCode";
-import { CopyCode } from "./CopyCode";
-import { LightningButton } from "./LightningButton";
 
 import { hardConfig } from "../config/hard";
+import { Error } from "./Error";
+import { Details } from "./Details";
+import { NostrButton } from "./NostrButton";
 
-export function LightningAuth({
+export function NostrAuth({
   title,
-  lnurl,
   theme,
 }: {
   title: string;
-  lnurl: string;
   theme?: {
     loading?: CSSProperties;
     wrapper?: CSSProperties;
     title?: CSSProperties;
-    qr?: CSSProperties;
-    copy?: CSSProperties;
+    error?: CSSProperties;
+    details?: CSSProperties;
     button?: CSSProperties;
   };
 }) {
@@ -27,11 +25,11 @@ export function LightningAuth({
     <div id={hardConfig.ids.wrapper} style={theme?.wrapper}>
       <Title style={theme?.title}>{title}</Title>
 
-      <QrCode lnurl={lnurl} style={theme?.qr} />
+      <Error style={theme?.error}></Error>
 
-      <CopyCode lnurl={lnurl} style={theme?.copy} />
+      <Details style={theme?.details}></Details>
 
-      <LightningButton lnurl={lnurl} style={theme?.button} />
+      <NostrButton style={theme?.button} />
     </div>
   );
 }

@@ -1,14 +1,14 @@
 import { renderToStaticMarkup } from "preact-render-to-string";
 
 import { hardConfig, Config } from "../config/index";
-import { vanilla } from "../utils/vanilla";
+import { vanilla } from "../utils/vanilla-nostr";
 
-import { LightningAuth } from "../components/LightningAuth";
+import { NostrAuth } from "../components/NostrAuth";
 import { Loading } from "../components/Loading";
 import { HandlerArguments, HandlerReturn } from "../utils/handlers";
 import { signInValidation } from "../validation/lnauth";
 
-function LightningAuthPage({ config }: { config: Config }) {
+function NostrAuthPage({ title, config }: { title: string; config: Config }) {
   return (
     <body
       style={{
@@ -43,9 +43,8 @@ function LightningAuthPage({ config }: { config: Config }) {
         />
 
         {/* auth component is rendered with display: none, after window.onload is triggered */}
-        <LightningAuth
-          title={config.title}
-          lnurl=""
+        <NostrAuth
+          title={title}
           theme={{
             wrapper: {
               display: "none", // initially hidden
@@ -60,36 +59,34 @@ function LightningAuthPage({ config }: { config: Config }) {
               fontSize: 25,
               color: config.theme.text,
               marginTop: 0,
-              marginBottom: 15,
+              marginBottom: 5,
             },
-            qr: {
-              display: "block",
-              overflow: "hidden",
-              borderRadius: 5,
-              width: "100%",
-              height: "auto",
+            error: {
+              fontSize: 16,
+              color: "red",
+              marginTop: 0,
             },
-            copy: {
-              wordBreak: "break-all",
-              whiteSpace: "pre-wrap",
-              userSelect: "all",
-              marginTop: 10,
-              marginBottom: 10,
+            details: {
+              marginTop: 15,
+              display: "none",
+              textAlign: "left",
             },
             button: {
+              display: "none",
+              margin: "auto",
               alignItems: "center",
               backgroundColor: config.theme.background,
               textDecoration: "none",
               border: `2px solid rgba(110, 110, 110, 0.3)`,
               borderRadius: 10,
               color: config.theme.text,
-              display: "flex",
               fontSize: "1.1rem",
               fontWeight: "500",
               justifyContent: "center",
               minHeight: "30px",
               padding: ".75rem 1rem",
               position: "relative",
+              cursor: "pointer",
             },
           }}
         />
@@ -123,15 +120,19 @@ export default async function handler({
     }
 
     // if a custom auth page is specified, send them there if they try and access this API
-    if (config.pages.signIn !== config.apis.signIn) {
+    if (config.pages.nostrSignIn !== config.apis.nostrSignIn) {
       const params = url.searchParams.toString();
       return {
-        redirect: new URL(`${config.baseUrl}${config.pages.signIn}?${params}`),
+        redirect: new URL(
+          `${config.baseUrl}${config.pages.nostrSignIn}?${params}`
+        ),
       };
     }
 
-    const title = config.title || config.baseUrl;
-    const html = renderToStaticMarkup(<LightningAuthPage config={config} />);
+    const title = "Login with Nostr";
+    const html = renderToStaticMarkup(
+      <NostrAuthPage title={title} config={config} />
+    );
 
     return {
       status: 200,
@@ -154,7 +155,7 @@ export default async function handler({
           100% {
               transform: rotate(360deg);
           }
-        } 
+        }
       </style>
     </head>
     ${html}

@@ -583,17 +583,17 @@ describe("pages", () => {
     expect(output).toEqual(expected);
   });
 
-  describe("pages.signIn", () => {
-    test("throws when pages.signIn is invalid type", () => {
+  describe("pages.lightningSignIn", () => {
+    test("throws when pages.lightningSignIn is invalid type", () => {
       const userConfig = merge({}, requiredConfig, {
-        pages: { signIn: 1 },
+        pages: { lightningSignIn: 1 },
       });
       const expected: any = [
         {
           code: "invalid_type",
           expected: "string",
           received: "number",
-          path: ["pages", "signIn"],
+          path: ["pages", "lightningSignIn"],
           message: "Expected string, received number",
         },
       ];
@@ -601,16 +601,16 @@ describe("pages", () => {
       expect(output).toEqual(expected);
     });
 
-    test("throws when pages.signIn is empty string", () => {
+    test("throws when pages.lightningSignIn is empty string", () => {
       const userConfig = merge({}, requiredConfig, {
-        pages: { signIn: "" },
+        pages: { lightningSignIn: "" },
       });
       const expected: any = [
         {
           validation: "regex",
           code: "invalid_string",
           message: "Invalid",
-          path: ["pages", "signIn"],
+          path: ["pages", "lightningSignIn"],
         },
         {
           code: "too_small",
@@ -619,32 +619,101 @@ describe("pages", () => {
           inclusive: true,
           exact: false,
           message: "String must contain at least 1 character(s)",
-          path: ["pages", "signIn"],
+          path: ["pages", "lightningSignIn"],
         },
       ];
       const output = parse(configValidation, userConfig);
       expect(output).toEqual(expected);
     });
 
-    test("throws when pages.signIn doesn't have leading slash", () => {
+    test("throws when pages.lightningSignIn doesn't have leading slash", () => {
       const userConfig = merge({}, requiredConfig, {
-        pages: { signIn: "signin" },
+        pages: { lightningSignIn: "signin" },
       });
       const expected: any = [
         {
           validation: "regex",
           code: "invalid_string",
           message: "Invalid",
-          path: ["pages", "signIn"],
+          path: ["pages", "lightningSignIn"],
         },
       ];
       const output = parse(configValidation, userConfig);
       expect(output).toEqual(expected);
     });
 
-    test("passes when pages.signIn has leading slash", () => {
+    test("passes when pages.lightningSignIn has leading slash", () => {
       const userConfig = merge({}, requiredConfig, {
-        pages: { signIn: "/signin" },
+        pages: { lightningSignIn: "/signin" },
+      });
+      const expected: any = [];
+      const output = parse(configValidation, userConfig);
+      expect(output).toEqual(expected);
+    });
+  });
+
+  describe("pages.nostrSignIn", () => {
+    test("throws when pages.nostrSignIn is invalid type", () => {
+      const userConfig = merge({}, requiredConfig, {
+        pages: { nostrSignIn: 1 },
+      });
+      const expected: any = [
+        {
+          code: "invalid_type",
+          expected: "string",
+          received: "number",
+          path: ["pages", "nostrSignIn"],
+          message: "Expected string, received number",
+        },
+      ];
+      const output = parse(configValidation, userConfig);
+      expect(output).toEqual(expected);
+    });
+
+    test("throws when pages.nostrSignIn is empty string", () => {
+      const userConfig = merge({}, requiredConfig, {
+        pages: { nostrSignIn: "" },
+      });
+      const expected: any = [
+        {
+          validation: "regex",
+          code: "invalid_string",
+          message: "Invalid",
+          path: ["pages", "nostrSignIn"],
+        },
+        {
+          code: "too_small",
+          minimum: 1,
+          type: "string",
+          inclusive: true,
+          exact: false,
+          message: "String must contain at least 1 character(s)",
+          path: ["pages", "nostrSignIn"],
+        },
+      ];
+      const output = parse(configValidation, userConfig);
+      expect(output).toEqual(expected);
+    });
+
+    test("throws when pages.nostrSignIn doesn't have leading slash", () => {
+      const userConfig = merge({}, requiredConfig, {
+        pages: { nostrSignIn: "signin" },
+      });
+      const expected: any = [
+        {
+          validation: "regex",
+          code: "invalid_string",
+          message: "Invalid",
+          path: ["pages", "nostrSignIn"],
+        },
+      ];
+      const output = parse(configValidation, userConfig);
+      expect(output).toEqual(expected);
+    });
+
+    test("passes when pages.nostrSignIn has leading slash", () => {
+      const userConfig = merge({}, requiredConfig, {
+        pages: { nostrSignIn: "/signin" },
       });
       const expected: any = [];
       const output = parse(configValidation, userConfig);
@@ -828,52 +897,6 @@ describe("flags", () => {
       const output = parse(configValidation, userConfig);
       expect(output).toEqual(expected);
     });
-  });
-});
-
-describe("title", () => {
-  test("throws when title is invalid type", () => {
-    const userConfig = merge({}, requiredConfig, {
-      title: 1,
-    });
-    const expected: any = [
-      {
-        code: "invalid_type",
-        expected: "string",
-        received: "number",
-        path: ["title"],
-        message: "Expected string, received number",
-      },
-    ];
-    const output = parse(configValidation, userConfig);
-    expect(output).toEqual(expected);
-  });
-
-  test("passes when title is empty string", () => {
-    const userConfig = merge({}, requiredConfig, {
-      title: "",
-    });
-    const expected: any = [];
-    const output = parse(configValidation, userConfig);
-    expect(output).toEqual(expected);
-  });
-
-  test("passes when title is null", () => {
-    const userConfig = merge({}, requiredConfig, {
-      title: null,
-    });
-    const expected: any = [];
-    const output = parse(configValidation, userConfig);
-    expect(output).toEqual(expected);
-  });
-
-  test("passes when title is a string", () => {
-    const userConfig = merge({}, requiredConfig, {
-      title: "foo bar",
-    });
-    const expected: any = [];
-    const output = parse(configValidation, userConfig);
-    expect(output).toEqual(expected);
   });
 });
 

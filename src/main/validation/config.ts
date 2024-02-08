@@ -34,7 +34,6 @@ export const configValidation = z
       })
       .strict()
       .nullish(),
-    title: z.string().nullable().optional(),
     theme: z
       .object({
         colorScheme: z
