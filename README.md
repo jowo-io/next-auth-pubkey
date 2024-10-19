@@ -71,10 +71,10 @@ This API will handle all of the Lightning auth API requests, such as generating 
 ```typescript
 // @/pages/api/pubkey/[...pubkey].ts
 
-import NextAuthLightning, { NextAuthLightningConfig } from "next-auth-pubkey";
+import NextAuthPubkey, { NextAuthPubkeyConfig } from "next-auth-pubkey";
 import generateQr from "next-auth-pubkey/generators/qr";
 
-const config: NextAuthLightningConfig = {
+const config: NextAuthPubkeyConfig = {
   baseUrl: process.env.NEXTAUTH_URL,
   secret: process.env.NEXTAUTH_SECRET,
   storage: {
@@ -94,7 +94,7 @@ const config: NextAuthLightningConfig = {
   generateQr,
 };
 
-const { lightningProvider, nostrProvider, handler } = NextAuthLightning(config);
+const { lightningProvider, nostrProvider, handler } = NextAuthPubkey(config);
 
 export { lightningProvider, nostrProvider };
 
@@ -145,7 +145,7 @@ There are various configurations available to you. Some are required, some are o
 ###
 
 ```typescript
-const config: NextAuthLightningConfig = {
+const config: NextAuthPubkeyConfig = {
   /**
    * @param {string} baseUrl
    *
@@ -500,7 +500,7 @@ Data can be stored in a medium of your choice. For example: a database, a docume
 ```typescript
 import { kv } from "@vercel/kv";
 
-const config: NextAuthLightningConfig = {
+const config: NextAuthPubkeyConfig = {
   // ...
   storage: {
     async set({ k1, session }) {

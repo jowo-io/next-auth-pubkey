@@ -50,7 +50,7 @@ export default function SignIn() {
 ```tsx
 import { GetServerSidePropsContext } from "next";
 import {
-  NextAuthLightningClientSession,
+  NextAuthPubkeyClientSession,
   createLightningAuth,
 } from "next-auth-pubkey/server";
 import { useLightningPolling } from "next-auth-pubkey/hooks";
@@ -71,7 +71,7 @@ export const getServerSideProps = async (
   };
 };
 
-function SignIn({ session }: { session: NextAuthLightningClientSession }) {
+function SignIn({ session }: { session: NextAuthPubkeyClientSession }) {
   const { lnurl, qr, button } = useLightningPolling(session);
 
   return (
@@ -92,7 +92,7 @@ export default function SignInPage({
   s: session,
   e: error,
 }: {
-  s: NextAuthLightningClientSession | null;
+  s: NextAuthPubkeyClientSession | null;
   e: string | null;
 }) {
   if (error || !session) {

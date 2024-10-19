@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import { hardConfig } from "../main/config/hard";
-import { NextAuthLightningClientSession } from "../server";
+import { NextAuthPubkeyClientSession } from "../server";
 import { formatLightningAuth } from "../utils/lnurl";
 import { maxNetworkRequestsFailures } from "./constants";
 
@@ -22,7 +22,7 @@ import { maxNetworkRequestsFailures } from "./constants";
  * @returns {String} qr - a url pointing the lnurl-auth QR Code image, should be used in the src prop of img tags
  * @returns {String} button - a deep-link that will open in Lightning enabled wallets, should be used in the href prop of anchor tags
  */
-export function useLightningPolling(session: NextAuthLightningClientSession): {
+export function useLightningPolling(session: NextAuthPubkeyClientSession): {
   lnurl: string | null;
   qr: string;
   button: string;

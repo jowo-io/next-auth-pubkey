@@ -1,4 +1,4 @@
-import NextAuthLightning from "next-auth-pubkey";
+import NextAuthPubkey from "next-auth-pubkey";
 import generateQr from "next-auth-pubkey/generators/qr";
 
 import storage from "node-persist"; // ⚠️ WARNING using node-persist is not recommended in lambda or edge environments.
@@ -28,7 +28,7 @@ const config = {
   generateQr,
 };
 
-const { lightningProvider, nostrProvider, handler } = NextAuthLightning(config);
+const { lightningProvider, nostrProvider, handler } = NextAuthPubkey(config);
 
 export { lightningProvider, nostrProvider };
 

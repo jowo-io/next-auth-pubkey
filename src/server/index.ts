@@ -1,5 +1,5 @@
 export type {
-  LightningClientSession as NextAuthLightningClientSession,
+  LightningClientSession as NextAuthPubkeyClientSession,
   NostrClientSession as NextAuthNostrClientSession,
 } from "./types";
 

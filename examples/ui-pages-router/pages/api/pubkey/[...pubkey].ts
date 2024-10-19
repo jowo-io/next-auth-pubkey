@@ -1,4 +1,4 @@
-import NextAuthLightning, { NextAuthLightningConfig } from "next-auth-pubkey";
+import NextAuthPubkey, { NextAuthPubkeyConfig } from "next-auth-pubkey";
 import generateQr from "next-auth-pubkey/generators/qr";
 
 import { env } from "@/env.mjs";
@@ -7,7 +7,7 @@ import storage from "node-persist"; // ⚠️ WARNING using node-persist is not 
 
 await storage.init();
 
-const config: NextAuthLightningConfig = {
+const config: NextAuthPubkeyConfig = {
   // required
   baseUrl: env.NEXTAUTH_URL,
   secret: env.NEXTAUTH_SECRET,
@@ -37,7 +37,7 @@ const config: NextAuthLightningConfig = {
   },
 };
 
-const { lightningProvider, nostrProvider, handler } = NextAuthLightning(config);
+const { lightningProvider, nostrProvider, handler } = NextAuthPubkey(config);
 
 export { lightningProvider, nostrProvider };
 

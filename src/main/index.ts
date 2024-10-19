@@ -52,7 +52,7 @@ export interface PubKeyAuthProfile
  * @returns {String} provider - a provider that can be added to the `next-auth` config's providerArray
  * @returns {String} handler - an API handler to be exported in the pages/api/pubkey/[...pubkey] folder
  */
-export default function NextAuthLightning(userConfig: UserConfig) {
+export default function NextAuthPubkey(userConfig: UserConfig) {
   const config = formatConfig(userConfig);
 
   const lightningProvider: OAuthConfig<PubKeyAuthProfile> = {

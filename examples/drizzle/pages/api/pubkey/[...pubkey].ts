@@ -1,4 +1,4 @@
-import NextAuthLightning, { NextAuthLightningConfig } from "next-auth-pubkey";
+import NextAuthPubkey, { NextAuthPubkeyConfig } from "next-auth-pubkey";
 import generateQr from "next-auth-pubkey/generators/qr";
 
 import { eq } from "drizzle-orm";
@@ -7,7 +7,7 @@ import { pubkeyTable, PubKey } from "@/schema/db";
 import db from "@/utils/db";
 import { env } from "@/env.mjs";
 
-const config: NextAuthLightningConfig = {
+const config: NextAuthPubkeyConfig = {
   // required
   baseUrl: env.NEXTAUTH_URL,
   secret: env.NEXTAUTH_SECRET,
@@ -37,7 +37,7 @@ const config: NextAuthLightningConfig = {
   generateQr,
 };
 
-const { lightningProvider, nostrProvider, handler } = NextAuthLightning(config);
+const { lightningProvider, nostrProvider, handler } = NextAuthPubkey(config);
 
 export { lightningProvider, nostrProvider };
 

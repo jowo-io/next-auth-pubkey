@@ -52,12 +52,12 @@ export default async function SignIn({
 "use client";
 
 import { useLightningPolling } from "next-auth-pubkey/hooks";
-import { NextAuthLightningClientSession } from "next-auth-pubkey/server";
+import { NextAuthPubkeyClientSession } from "next-auth-pubkey/server";
 
 export default function LightningAuth({
   session,
 }: {
-  session: NextAuthLightningClientSession;
+  session: NextAuthPubkeyClientSession;
 }) {
   const { lnurl, qr, button } = useLightningPolling(session);
 
