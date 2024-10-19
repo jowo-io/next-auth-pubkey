@@ -66,7 +66,7 @@ openssl rand -base64 32
 
 Create a new API route under `pages/api/pubkey/[...pubkey].ts`
 
-This API will handle all of the Lightning auth API requests, such as generating QRs, handling callbacks, polling and issuing JWT auth tokens.
+This API will handle all of the pubkey auth API requests, such as generating QRs, handling callbacks, polling and issuing JWT auth tokens.
 
 ```typescript
 // @/pages/api/pubkey/[...pubkey].ts
@@ -105,7 +105,7 @@ export default handler;
 
 ### Provider
 
-In your existing `pages/api/auth/[...nextauth].ts` config file, import and add the Lightning provider to the provider array.
+In your existing `pages/api/auth/[...nextauth].ts` config file, import and add the provider to the providers array.
 
 ```typescript
 // @/pages/api/auth/[...nextauth].ts
@@ -159,15 +159,15 @@ const config: NextAuthPubkeyConfig = {
    * @param {string} secret
    *
    * Must be defined as a securely generated random string. Used to sign the
-   * JWT token that authenticates users who have logged in with Lightning.
+   * JWT token that authenticates users who have logged in.
    */
   secret: process.env.NEXTAUTH_SECRET,
 
   /**
    * @param {object} storage
    *
-   * The lnurl-auth spec requires that a user's Lightning wallet trigger a
-   * callback as part of the authentication flow. So, we require session storage to
+   * pubkey auth flows require that a callback be triggered
+   * part of the authentication flow. So, we require session storage to
    * persist some data and ensure it's available when the callback is triggered.
    * Data can be stored in a medium of your choice.
    *
@@ -269,7 +269,7 @@ const config: NextAuthPubkeyConfig = {
     /**
      * @param {string} nostrSignIn
      *
-     * A Lightning auth page will be automatically generated unless the
+     * A nostr auth page will be automatically generated unless the
      * `nostrSignIn` path is specified. It lets you define your own page where
      * you can configure a custom Next.js page and customize the UI.
      *
@@ -358,13 +358,13 @@ const config: NextAuthPubkeyConfig = {
   },
 
   /**
-   * Control the color scheme of the "Login with Lightning" page and button.
+   * Control the color scheme of the "Login with ..." page and button.
    */
   theme: {
     /**
      * @param {string} colorScheme
      *
-     * Define a color scheme for the "Login with Lightning" UI.
+     * Define a color scheme for the "Login with ..." UI.
      *
      * @default "light"
      */
@@ -493,7 +493,7 @@ const config: NextAuthPubkeyConfig = {
 
 # Storage
 
-The `lnurl-auth` spec requires that a user's Lightning wallet trigger a callback as part of the authentication flow. For this reason, it may be that the device scanning the QR (e.g. a mobile) is not the same device that's trying to authenticate (e.g. a desktop). So, we require session storage to persist some data and make it available across devices and ensure it's available when the callback is triggered.
+pubkey auth flows require that a callback be triggered on success as part of the authentication flow. For this reason, it may be that the device scanning the QR (e.g. a mobile) is not the same device that's trying to authenticate (e.g. a desktop). So, we require session storage to persist some data and make it available across devices and ensure it's available when the callback is triggered.
 
 Data can be stored in a medium of your choice. For example: a database, a document store, or a session store. Here's an example using [Vercel KV](https://vercel.com/docs/storage/vercel-kv):
 
