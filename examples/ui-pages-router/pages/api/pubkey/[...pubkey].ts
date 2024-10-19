@@ -35,9 +35,6 @@ const config: NextAuthLightningConfig = {
     nostrSignIn: "/nostr-signin",
     error: "/error",
   },
-  theme: {
-    colorScheme: "dark",
-  },
 };
 
 const { lightningProvider, nostrProvider, handler } = NextAuthLightning(config);

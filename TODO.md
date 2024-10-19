@@ -40,7 +40,6 @@ Below is a TODO list for further development of `next-auth-pubkey`.
 
 Stuff I may or may not get around to:
 
-- allow query params to be passed into the pages config options
 - add `auto` color scheme that user browser's preferred dark/light settings
 - consider adding various styles of avatar and name generators
 - consider / investigate how to SSR react components so the `vanilla.ts` shim can be deprecated

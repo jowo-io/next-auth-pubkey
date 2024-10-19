@@ -26,11 +26,6 @@ const config = {
     },
   },
   generateQr,
-
-  // optional
-  theme: {
-    colorScheme: "dark",
-  },
 };
 
 const { lightningProvider, nostrProvider, handler } = NextAuthLightning(config);

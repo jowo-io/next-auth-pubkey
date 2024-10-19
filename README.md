@@ -374,7 +374,7 @@ const config: NextAuthLightningConfig = {
      *
      * @default "light"
      */
-    colorScheme: "dark" | "light",
+    colorScheme: "light" | "dark",
 
     /**
      * @param {string} background

@@ -1,3 +1,3 @@
-import { GET, POST } from "./config";
+import { GET, POST } from "@/utils/nextauth";
 
 export { GET, POST };

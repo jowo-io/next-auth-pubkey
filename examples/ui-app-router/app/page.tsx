@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 
-import { authOptions } from "@/app/api/auth/[...nextauth]/config";
+import { authOptions } from "@/utils/nextauth";
 import { SignInButton } from "./components/SignInButton";
 
 const Home = async () => {

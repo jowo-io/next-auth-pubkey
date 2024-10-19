@@ -1,5 +1,4 @@
 import merge from "lodash.merge";
-import { z } from "zod";
 
 import { Config, UserConfig, OptionalConfig, ThemeStyles } from "./types";
 import { hardConfig } from "./hard";

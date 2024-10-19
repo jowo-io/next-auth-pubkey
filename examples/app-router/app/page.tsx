@@ -1,7 +1,7 @@
 import React from "react";
 import { getServerSession } from "next-auth";
 
-import { authOptions } from "@/app/api/auth/[...nextauth]/config";
+import { authOptions } from "@/utils/nextauth";
 import { SignIn } from "./components/SignIn";
 
 const Home = async () => {

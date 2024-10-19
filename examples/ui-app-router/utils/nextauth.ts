@@ -1,3 +1,5 @@
+import { AuthOptions } from "next-auth";
+
 import NextAuthLightning, { NextAuthLightningConfig } from "next-auth-pubkey";
 import generateQr from "next-auth-pubkey/generators/qr";
 
@@ -39,14 +41,13 @@ const config: NextAuthLightningConfig = {
     diagnostics: true,
     logs: true,
   },
-  theme: {
-    colorScheme: "dark",
-  },
 };
 
 const { lightningProvider, nostrProvider, GET, POST } =
   NextAuthLightning(config);
 
-export { lightningProvider, nostrProvider };
+export const authOptions: AuthOptions = {
+  providers: [lightningProvider, nostrProvider],
+};
 
 export { GET, POST };

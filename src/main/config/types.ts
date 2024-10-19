@@ -114,7 +114,7 @@ export type OptionalConfig = {
     logs: boolean;
   };
   theme: {
-    colorScheme?: "dark" | "light";
+    colorScheme?: "light" | "dark";
   } & Partial<ThemeStyles>;
   intervals: {
     poll: number;
