@@ -66,6 +66,6 @@ export const configValidation = z
           .optional(),
       })
       .strict()
-      .optional(),
+      .nullish(),
   })
   .strict();

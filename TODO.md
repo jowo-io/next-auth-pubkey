@@ -4,9 +4,6 @@ Below is a TODO list for further development of `next-auth-pubkey`.
 
 ### Bugs
 
-- https://github.com/orgs/dicebear/discussions/324
-- tree-shake collection, import only robots
-- flags are not optional
 - next-auth@14.1.0 - ReferenceError: Cannot access 'lightningProvider' before initialization
 - consider removing the create interval - is it needed?
 

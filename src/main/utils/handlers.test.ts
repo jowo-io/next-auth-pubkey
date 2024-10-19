@@ -328,7 +328,7 @@ describe("generateQr", () => {
       config.pages.error = errorPage;
     });
     afterAll(() => {
-      config.pages.error = defaultConfig.pages?.error;
+      config.pages.error = defaultConfig.pages.error;
     });
 
     test("pages router response", async () => {

@@ -101,12 +101,18 @@ export type ThemeStyles = {
   qrMargin: number;
 };
 
+type DeepPartial<T> = T extends object
+  ? {
+      [P in keyof T]?: DeepPartial<T[P]>;
+    }
+  : T;
+
 export type OptionalConfig = {
-  pages: Partial<{
+  pages: {
     lightningSignIn: string;
     nostrSignIn: string;
     error: string;
-  }>;
+  };
   generateAvatar: AvatarGenerator | null;
   generateName: NameGenerator | null;
   flags: {
@@ -114,15 +120,15 @@ export type OptionalConfig = {
     logs: boolean;
   };
   theme: {
-    colorScheme?: "light" | "dark";
-  } & Partial<ThemeStyles>;
+    colorScheme?: "dark" | "light";
+  } & ThemeStyles;
   intervals: {
     poll: number;
     create: number;
   };
 };
 
-export type UserConfig = RequiredConfig & Partial<OptionalConfig>;
+export type UserConfig = RequiredConfig & DeepPartial<OptionalConfig>;
 
 export type Config = HardConfig &
   RequiredConfig &

@@ -1,6 +1,6 @@
 import merge from "lodash.merge";
 
-import { Config, UserConfig, OptionalConfig, ThemeStyles } from "./types";
+import { Config, UserConfig, ThemeStyles } from "./types";
 import { hardConfig } from "./hard";
 import { configValidation } from "../validation/config";
 
@@ -26,7 +26,7 @@ export const colorSchemeDark: ThemeStyles = {
   qrMargin: 0.5,
 };
 
-export const defaultConfig: Partial<OptionalConfig> = {
+export const defaultConfig = {
   pages: {
     lightningSignIn: "/api/pubkey/lightning-signin", // default lightning auth page
     nostrSignIn: "/api/pubkey/nostr-signin", // default nostr auth page
