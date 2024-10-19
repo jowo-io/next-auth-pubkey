@@ -27,6 +27,7 @@ Below is a TODO list for further development of `next-auth-pubkey`.
 ##### Checklist
 
 - bump version
+  - bump version example lock files
 - run `npm i` to update lock file
 - commit with git
 - build with npm
