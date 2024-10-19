@@ -1,9 +1,3 @@
-> ℹ️ Beta notice
->
-> This project is currently in beta. A stable release will land by February 2024.
->
-> If you encounter any issues during installation and configuration, or in development and production environments, it'd be greatly appreciated if you report them [here](https://github.com/jowo-io/next-auth-pubkey/issues).
-
 # About
 
 A light-weight Lightning and Nostr auth provider for your Next.js app that's entirely self-hosted and plugs seamlessly into the [next-auth](https://github.com/nextauthjs/next-auth) framework.
