@@ -18,8 +18,6 @@ Your users will then be shown an additional authentication option in the provide
 
 The `next-auth-pubkey` package extends `lnurl-auth` by wrapping it in an OAuth API. `lnurl-auth` is used to authenticate your users, and OAuth is wrapped around it to make integration with `next-auth` seamless.
 
-As well as providing the basic authentication functionality that you'd expect, `next-auth-pubkey` also offers some extra functionality, such as deterministically generating avatars and usernames for authenticated users! (These extra features can be disabled if not required)
-
 # Compatibility
 
 ```json
@@ -81,11 +79,8 @@ This API will handle all of the Lightning auth API requests, such as generating 
 
 import NextAuthLightning, { NextAuthLightningConfig } from "next-auth-pubkey";
 import generateQr from "next-auth-pubkey/generators/qr";
-import generateName from "next-auth-pubkey/generators/name";
-import generateAvatar from "next-auth-pubkey/generators/avatar";
 
 const config: NextAuthLightningConfig = {
-  // required
   baseUrl: process.env.NEXTAUTH_URL,
   secret: process.env.NEXTAUTH_SECRET,
   storage: {
@@ -103,13 +98,6 @@ const config: NextAuthLightningConfig = {
     },
   },
   generateQr,
-
-  // optional
-  generateName,
-  generateAvatar,
-  theme: {
-    colorScheme: "dark",
-  },
 };
 
 const { lightningProvider, nostrProvider, handler } = NextAuthLightning(config);
@@ -142,20 +130,14 @@ export default NextAuth(authOptions);
 
 # Generators
 
-If you were to authenticate a user with only `lnurl-auth`, all you'd know about them is their unique ID (a `pubkey`). The `next-auth-pubkey` package goes a step further and provides several generator functions that can be used to deterministically (the `pubkey` is used as a seed) generate avatars and usernames. This means you can show users a unique name and image that'll be associated with their account!
+If you were to authenticate a user with only `lnurl-auth`, all you'd know about them is their unique ID (a `pubkey`).
 
-As well as the avatar and image generators, there's also a QR code generator.
+The `next-auth-pubkey` package goes a step further and provides an optional feature for deterministically (the `pubkey` can be used as a seed) generate avatars and usernames. This means you can show users a unique name and image that'll be associated with their account.
 
-The generators are tree-shakeable. If you don't need them, simply don't import them and they'll not be included in your app's bundle.
+As well as the optional avatar and image generators, there's also a required QR code generator.
 
-```typescript
-import generateQr from "next-auth-pubkey/generators/qr";
-import generateName from "next-auth-pubkey/generators/name";
-import generateAvatar from "next-auth-pubkey/generators/avatar";
-```
+See the `generateQr`, `generateAvatar` & `generateName` functions in the config section below.
 
-> ℹ️ You can write your own generator functions if those provided don't suit your needs!
->
 > Once you have configured the generator functions you can launch your dev server and test them locally on the diagnostics page:
 
 ```
@@ -328,21 +310,15 @@ const config: NextAuthLightningConfig = {
   /**
    * @param {function} generateAvatar
    *
-   * Define the deterministic avatar generator.
+   * Define an avatar generator function if you want to assign random names to your pubkey users.
+   *
    * It must return a base64 encoded png/jpg OR svg XML markup.
-   *
-   * A default avatar generator is provided. It can be imported from:
-   * import generateAvatar from "next-auth-pubkey/generators/avatar";
-   *
-   * The default avatar generation library that's used is dicebear's bottts style.
-   * @see https://www.dicebear.com/styles/bottts/
    */
-  async generateAvatar(data, config) {
+  async generateAvatar(pubkey) {
+    // import { createAvatar } from "@dicebear/core";
+    // import { bottts } from "@dicebear/collection";
     return {
-      data: "data:image/png;base64,iVBO.....CYII=",
-      type: "png",
-      // or
-      data: "<svg>.....</svg>",
+      data: createAvatar(bottts, { seed: pubkey }).toString(),
       type: "svg",
     };
   },
@@ -350,17 +326,16 @@ const config: NextAuthLightningConfig = {
   /**
    * @param {function} generateName
    *
-   * Define the deterministic name generator.
-   *
-   * A default name generator is provided. It can be imported from:
-   * import generateName from "next-auth-pubkey/generators/name";
-   *
-   * The default name generation library used is `unique-names-generator`
-   * @see https://www.npmjs.com/package/unique-names-generator
+   * Define a name generator function if you want to assign random names to your pubkey users.
    */
-  async generateName(seed) {
+  async generateName(pubkey) {
+    // import { uniqueNamesGenerator, adjectives, colors, animals } from "unique-names-generator";
     return {
-      name: "Sponge Bob",
+      name: uniqueNamesGenerator({
+        dictionaries: [adjectives, colors, animals],
+        separator: "-",
+        pubkey,
+      }),
     };
   },
 

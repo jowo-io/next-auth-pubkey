@@ -1,7 +1,5 @@
 import NextAuthLightning, { NextAuthLightningConfig } from "next-auth-pubkey";
 import generateQr from "next-auth-pubkey/generators/qr";
-import generateName from "next-auth-pubkey/generators/name";
-import generateAvatar from "next-auth-pubkey/generators/avatar";
 
 import { env } from "@/env.mjs";
 
@@ -32,9 +30,6 @@ const config: NextAuthLightningConfig = {
   generateQr,
 
   // optional
-  generateName,
-  generateAvatar,
-
   pages: {
     lightningSignIn: "/lightning-signin",
     nostrSignIn: "/nostr-signin",

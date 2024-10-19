@@ -1,7 +1,5 @@
 import NextAuthLightning from "next-auth-pubkey";
 import generateQr from "next-auth-pubkey/generators/qr";
-import generateName from "next-auth-pubkey/generators/name";
-import generateAvatar from "next-auth-pubkey/generators/avatar";
 
 import storage from "node-persist"; // ⚠️ WARNING using node-persist is not recommended in lambda or edge environments.
 
@@ -30,9 +28,6 @@ const config = {
   generateQr,
 
   // optional
-  generateName,
-  generateAvatar,
-
   theme: {
     colorScheme: "dark",
   },

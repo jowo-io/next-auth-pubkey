@@ -1,7 +1,5 @@
 import NextAuthLightning, { NextAuthLightningConfig } from "next-auth-pubkey";
 import generateQr from "next-auth-pubkey/generators/qr";
-import generateName from "next-auth-pubkey/generators/name";
-import generateAvatar from "next-auth-pubkey/generators/avatar";
 
 import { eq } from "drizzle-orm";
 
@@ -39,8 +37,6 @@ const config: NextAuthLightningConfig = {
   generateQr,
 
   // optional
-  generateName,
-  generateAvatar,
   theme: {
     colorScheme: "dark",
   },
