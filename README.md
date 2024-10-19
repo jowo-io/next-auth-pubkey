@@ -1,6 +1,6 @@
 # About
 
-A light-weight Lightning and Nostr auth provider for your Next.js app that's entirely self-hosted and plugs seamlessly into the [next-auth](https://github.com/nextauthjs/next-auth) framework.
+A light-weight Lightning and Nostr auth provider for your Next.js app that's entirely self-hosted, meaning no 3rd party API keys required, and plugs seamlessly into the [next-auth](https://github.com/nextauthjs/next-auth) framework.
 
 > ℹ️ This package is built for Next.js apps that use [next-auth](https://github.com/nextauthjs/next-auth). It's not compatible with other authentication libraries.
 
