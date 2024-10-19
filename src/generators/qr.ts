@@ -1,6 +1,7 @@
 import QRCode from "qrcode";
 
 import { QRGenerator } from "./types";
+import { colorSchemeDark } from "../main/config/default";
 
 /**
  * An async function that generates a QR code.
@@ -13,12 +14,13 @@ import { QRGenerator } from "./types";
  * @returns {String} type - image type: "svg" | "png" | "jpg"
  */
 const generateQr: QRGenerator = async (data, config) => {
+  const theme = config?.theme || colorSchemeDark;
   const options = {
     color: {
-      dark: config.theme.qrForeground,
-      light: config.theme.qrBackground,
+      dark: theme.qrForeground,
+      light: theme.qrBackground,
     },
-    margin: config.theme.qrMargin,
+    margin: theme.qrMargin,
   };
 
   return {
