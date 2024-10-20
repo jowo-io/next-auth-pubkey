@@ -18,4 +18,6 @@ Along side the `.env.example` file in this example app, create a `.env` file wit
 
 Run `npm i` to install dependencies.
 
+Run `npm run db:generate` and `npm run db:migrate`
+
 Run `npm run dev` to launch the dev server and visit `localhost:3000` to view the app.
