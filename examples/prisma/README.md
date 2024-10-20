@@ -1,6 +1,6 @@
 ## About
 
-This example uses the [Drizzle ORM](https://github.com/drizzle-team/drizzle-orm) to connect to a MySql database which is used for storage of pubkey auth session data.
+This example uses the [Prisma ORM](https://www.prisma.io/) to connect to a MySql database which is used for storage of pubkey auth session data.
 
 ## Getting Started
 
@@ -17,9 +17,5 @@ Along side the `.env.example` file in this example app, create a `.env` file wit
 #### Running this examples
 
 Run `npm i` to install dependencies.
-
-Run `npm run db:generate` to generate the new database schema.
-
-Run the generated queries in your mysql environment of choice.
 
 Run `npm run dev` to launch the dev server and visit `localhost:3000` to view the app.
