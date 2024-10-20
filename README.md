@@ -105,7 +105,7 @@ export default handler;
 
 ### Provider
 
-In your existing `pages/api/auth/[...nextauth].ts` config file, import and add the provider to the providers array.
+In your existing `pages/api/auth/[...nextauth].ts` config file, import and add the pubkey providers to the providers array.
 
 ```typescript
 // @/pages/api/auth/[...nextauth].ts
@@ -114,8 +114,8 @@ import { lightningProvider, nostrProvider } from "../pubkey/[...pubkey]"; // <--
 
 export const authOptions: AuthOptions = {
   providers: [
-    lightningProvider, // <--- and add the providers to the providers array
-    nostrProvider, //     <--- and add the providers to the providers array
+    lightningProvider, // <--- add the provider to the providers array
+    nostrProvider, //     <--- add the provider to the providers array
   ],
 };
 
