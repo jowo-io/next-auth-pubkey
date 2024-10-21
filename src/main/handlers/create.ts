@@ -44,7 +44,7 @@ export default async function handler({
   const encoded = lnurlEncode(callbackUrl.toString()).toUpperCase();
 
   try {
-    await config.storage.set({ k1, session: { k1, state } }, url, config);
+    await config.storage.set({ k1, data: { k1, state } }, url, config);
   } catch (e) {
     if (config.flags.diagnostics && config.flags.logs) {
       console.warn(

@@ -16,7 +16,7 @@ Below is a TODO list for further development of `next-auth-pubkey`.
   - test all user configuration options
 - tidy up READMEs
   - add BTC address to contributors section of readme
-  - add suggestion: cleaning up old and unused pubkey session data that was created but never reached success state.
+  - add suggestion: cleaning up old and unused pubkey data that was created but never reached success state.
 
 ### Release
 

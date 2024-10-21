@@ -1,6 +1,6 @@
 ## About
 
-This example uses the [Prisma ORM](https://www.prisma.io/) to connect to a MySql database which is used for storage of pubkey auth session data.
+This example uses the [Prisma ORM](https://www.prisma.io/) to connect to a MySql database which is used for storage of pubkey data.
 
 ## Getting Started
 

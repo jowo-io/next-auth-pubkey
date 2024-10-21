@@ -104,7 +104,7 @@ export default async function handler({
 
   try {
     await config.storage.update(
-      { k1, session: { pubkey, sig, success: true } },
+      { k1, data: { pubkey, sig, success: true } },
       url,
       config
     );

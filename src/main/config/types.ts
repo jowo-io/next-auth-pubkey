@@ -37,7 +37,7 @@ export type HardConfig = {
   };
 };
 
-export type StorageSession = {
+export type StorageData = {
   k1: string;
   state: string;
 
@@ -56,7 +56,7 @@ export type RequiredConfig = {
     set: (
       args: {
         k1: string;
-        session: {
+        data: {
           k1: string;
           state: string;
         };
@@ -68,11 +68,11 @@ export type RequiredConfig = {
       args: { k1: string },
       url: URL,
       config: Config
-    ) => Promise<StorageSession | null | undefined>;
+    ) => Promise<StorageData | null | undefined>;
     update: (
       args: {
         k1: string;
-        session: {
+        data: {
           pubkey: string;
           sig: string;
           success: boolean;

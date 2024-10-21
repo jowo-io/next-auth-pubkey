@@ -118,7 +118,7 @@ describe("create handler", () => {
       config,
     });
     expect(jest.mocked(config.storage.set)).toHaveBeenCalledWith(
-      { k1: newK1, session: { k1: newK1, state } },
+      { k1: newK1, data: { k1: newK1, state } },
       url,
       config
     );

@@ -152,7 +152,7 @@ describe("callback handler", () => {
       config,
     });
     expect(jest.mocked(config.storage.update)).toHaveBeenCalledWith(
-      { k1: validK1, session: { pubkey, sig, success: true } },
+      { k1: validK1, data: { pubkey, sig, success: true } },
       url,
       config
     );

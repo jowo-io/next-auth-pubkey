@@ -1,6 +1,6 @@
 import { randomBytes } from "crypto";
 
-import { Config, StorageSession } from "../config/types";
+import { Config, StorageData } from "../config/types";
 import { HandlerArguments, HandlerReturn } from "../utils/handlers";
 
 type Check = {
@@ -10,8 +10,8 @@ type Check = {
 };
 
 export function testField(
-  received: StorageSession | null | undefined,
-  expected: StorageSession | null | undefined,
+  received: StorageData | null | undefined,
+  expected: StorageData | null | undefined,
   field: "k1" | "state" | "pubkey" | "sig" | "success"
 ): Check {
   const state = received?.[field] !== expected?.[field] ? "failed" : "success";
@@ -51,7 +51,7 @@ export async function testSet(
 
 export async function testGet(
   expectedSession: { k1: string; state: string },
-  getMethod: () => Promise<StorageSession | null | undefined>,
+  getMethod: () => Promise<StorageData | null | undefined>,
   config: Config
 ): Promise<Check[]> {
   const checks: Check[] = [];
@@ -92,7 +92,7 @@ export async function testGet(
 export async function testUpdate(
   expectedSession: { k1: string; state: string },
   updateMethod: (override?: string) => Promise<undefined>,
-  getMethod: () => Promise<StorageSession | null | undefined>,
+  getMethod: () => Promise<StorageData | null | undefined>,
   config: Config
 ): Promise<Check[]> {
   const checks: Check[] = [];
@@ -173,7 +173,7 @@ export async function testUpdate(
 
 export async function testDelete(
   deleteMethod: () => Promise<undefined>,
-  getMethod: () => Promise<StorageSession | null | undefined>,
+  getMethod: () => Promise<StorageData | null | undefined>,
   config: Config
 ): Promise<Check[]> {
   const checks: Check[] = [];
@@ -258,11 +258,11 @@ export default async function handler({
     const updateSession = { pubkey, sig, success: true };
 
     const setMethod = async () =>
-      await config.storage.set({ k1, session: setSession }, url, config);
+      await config.storage.set({ k1, data: setSession }, url, config);
     const getMethod = async () => await config.storage.get({ k1 }, url, config);
     const updateMethod = async (override?: string) =>
       await config.storage.update(
-        { k1: override || k1, session: updateSession },
+        { k1: override || k1, data: updateSession },
         url,
         config
       );

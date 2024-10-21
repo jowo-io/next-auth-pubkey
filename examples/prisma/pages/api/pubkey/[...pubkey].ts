@@ -11,28 +11,19 @@ const config: NextAuthPubkeyConfig = {
   baseUrl: env.NEXTAUTH_URL,
   secret: env.NEXTAUTH_SECRET,
   storage: {
-    async set({ session }) {
-      await prisma.pubkey.create({
-        data: session,
-      });
+    async set({ data }) {
+      await prisma.pubkey.create({ data });
     },
     async get({ k1 }) {
-      const results = await prisma.pubkey.findUnique({
-        where: { k1 },
-      });
+      const results = await prisma.pubkey.findUnique({ where: { k1 } });
       if (!results) throw new Error(`Could not find k1:${k1}`);
       return results;
     },
-    async update({ k1, session }) {
-      await prisma.pubkey.update({
-        where: { k1 },
-        data: session,
-      });
+    async update({ k1, data }) {
+      await prisma.pubkey.update({ where: { k1 }, data });
     },
     async delete({ k1 }) {
-      await prisma.pubkey.delete({
-        where: { k1 },
-      });
+      await prisma.pubkey.delete({ where: { k1 } });
     },
   },
   generateQr,

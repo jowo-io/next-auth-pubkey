@@ -1,5 +1,5 @@
 export type {
-  StorageSession as NextAuthPubkeyStorageSession,
+  StorageData as NextAuthPubkeyStorageData,
   UserConfig as NextAuthPubkeyConfig,
 } from "./main/config/types";
 export type { NextAuthPubkeyClientSession } from "./server/index";

@@ -1,6 +1,6 @@
 ## About
 
-This example uses the [Drizzle ORM](https://github.com/drizzle-team/drizzle-orm) to connect to a MySql database which is used for storage of pubkey auth session data.
+This example uses the [Drizzle ORM](https://github.com/drizzle-team/drizzle-orm) to connect to a MySql database which is used for storage of pubkey data.
 
 ## Getting Started
 

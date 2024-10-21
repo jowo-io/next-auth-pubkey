@@ -1,6 +1,6 @@
 ## About
 
-This example uses the Vercel [KV](https://vercel.com/docs/storage/vercel-kv) (Redis) for storage of pubkey auth session data.
+This example uses the Vercel [KV](https://vercel.com/docs/storage/vercel-kv) (Redis) for storage of pubkey data.
 
 ## Getting Started
 

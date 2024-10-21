@@ -8,12 +8,11 @@ import db from "@/utils/db";
 import { env } from "@/env.mjs";
 
 const config: NextAuthPubkeyConfig = {
-  // required
   baseUrl: env.NEXTAUTH_URL,
   secret: env.NEXTAUTH_SECRET,
   storage: {
-    async set({ k1, session }) {
-      await db.insert(pubkeyTable).values(session);
+    async set({ data }) {
+      await db.insert(pubkeyTable).values(data);
     },
     async get({ k1 }) {
       const results: PubKey[] = await db
@@ -23,10 +22,10 @@ const config: NextAuthPubkeyConfig = {
 
       return results[0];
     },
-    async update({ k1, session }) {
+    async update({ k1, data }) {
       const results = await db
         .update(pubkeyTable)
-        .set(session)
+        .set(data)
         .where(eq(pubkeyTable.k1, k1));
       if (!results[0].affectedRows) throw new Error(`Could not find k1:${k1}`);
     },

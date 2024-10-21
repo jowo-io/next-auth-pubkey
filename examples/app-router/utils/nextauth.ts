@@ -10,20 +10,19 @@ import storage from "node-persist"; // ⚠️ WARNING using node-persist is not 
 await storage.init();
 
 const config: NextAuthPubkeyConfig = {
-  // required
   baseUrl: env.NEXTAUTH_URL,
   secret: env.NEXTAUTH_SECRET,
   storage: {
-    async set({ k1, session }) {
-      await storage.setItem(`k1:${k1}`, session);
+    async set({ k1, data }) {
+      await storage.setItem(`k1:${k1}`, data);
     },
     async get({ k1 }) {
       return await storage.getItem(`k1:${k1}`);
     },
-    async update({ k1, session }) {
+    async update({ k1, data }) {
       const old = await storage.getItem(`k1:${k1}`);
       if (!old) throw new Error(`Could not find k1:${k1}`);
-      await storage.updateItem(`k1:${k1}`, { ...old, ...session });
+      await storage.updateItem(`k1:${k1}`, { ...old, ...data });
     },
     async delete({ k1 }) {
       await storage.removeItem(`k1:${k1}`);

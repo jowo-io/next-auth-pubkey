@@ -78,17 +78,17 @@ const config: NextAuthPubkeyConfig = {
   baseUrl: process.env.NEXTAUTH_URL,
   secret: process.env.NEXTAUTH_SECRET,
   storage: {
-    async set({ k1, session }) {
-      // save pubkey auth session data based on k1 id
+    async set({ k1, data }) {
+      // save pubkey data based on k1 id
     },
     async get({ k1 }) {
-      // lookup and return pubkey auth session data based on k1 id
+      // lookup and return pubkey data based on k1 id
     },
-    async update({ k1, session }) {
-      // update pubkey auth session data based on k1 id
+    async update({ k1, data }) {
+      // update pubkey data based on k1 id
     },
     async delete({ k1 }) {
-      // delete pubkey auth session data based on k1 id
+      // delete pubkey data based on k1 id
     },
   },
   generateQr,
@@ -167,7 +167,7 @@ const config: NextAuthPubkeyConfig = {
    * @param {object} storage
    *
    * pubkey auth flows require that a callback be triggered
-   * part of the authentication flow. So, we require session storage to
+   * part of the authentication flow. So, storage is required to
    * persist some data and ensure it's available when the callback is triggered.
    * Data can be stored in a medium of your choice.
    *
@@ -184,8 +184,8 @@ const config: NextAuthPubkeyConfig = {
      * The k1 is a unique key that's used to store the
      * data for later use.
      */
-    async set({ k1, session }) {
-      // save pubkey auth session data based on k1 id
+    async set({ k1, data }) {
+      // save pubkey data based on k1 id
     },
 
     /**
@@ -196,7 +196,7 @@ const config: NextAuthPubkeyConfig = {
      * and return data previously stored under it.
      */
     async get({ k1 }) {
-      // lookup and return pubkey auth session data based on k1 id
+      // lookup and return pubkey data based on k1 id
     },
 
     /**
@@ -207,10 +207,10 @@ const config: NextAuthPubkeyConfig = {
      * update data previously stored under it.
      *
      * @note the storage.update method should throw an error if
-     * an existing session is not already stored under the k1.
+     * an existing data is not already stored under the k1.
      */
-    async update({ k1, session }) {
-      // update pubkey auth session data based on k1 id
+    async update({ k1, data }) {
+      // update pubkey data based on k1 id
     },
 
     /**
@@ -221,7 +221,7 @@ const config: NextAuthPubkeyConfig = {
      * delete data previously saved data.
      */
     async delete({ k1 }) {
-      // delete pubkey auth session data based on k1 id
+      // delete pubkey data based on k1 id
     },
   },
 
@@ -493,7 +493,7 @@ const config: NextAuthPubkeyConfig = {
 
 # Storage
 
-pubkey auth flows require that a callback be triggered on success as part of the authentication flow. For this reason, it may be that the device scanning the QR (e.g. a mobile) is not the same device that's trying to authenticate (e.g. a desktop). So, we require session storage to persist some data and make it available across devices and ensure it's available when the callback is triggered.
+pubkey auth flows require that a callback be triggered on success as part of the authentication flow. For this reason, it may be that the device scanning the QR (e.g. a mobile) is not the same device that's trying to authenticate (e.g. a desktop). So, we require data storage to persist some data and make it available across devices and ensure it's available when the callback is triggered.
 
 Data can be stored in a medium of your choice. For example: a database, a document store, or a session store. Here's an example using [Vercel KV](https://vercel.com/docs/storage/vercel-kv):
 
@@ -503,15 +503,15 @@ import { kv } from "@vercel/kv";
 const config: NextAuthPubkeyConfig = {
   // ...
   storage: {
-    async set({ k1, session }) {
-      await kv.set(`k1:${k1}`, session);
+    async set({ k1, data }) {
+      await kv.set(`k1:${k1}`, data);
     },
     async get({ k1 }) {
       return await kv.get(`k1:${k1}`);
     },
-    async update({ k1, session }) {
+    async update({ k1, data }) {
       const old = (await kv.get(`k1:${k1}`)) || {};
-      await kv.set(`k1:${k1}`, { ...old, ...session });
+      await kv.set(`k1:${k1}`, { ...old, ...data });
     },
     async delete({ k1 }) {
       await kv.del(`k1:${k1}`);
@@ -529,7 +529,7 @@ Once you have configured the storage functions you can launch your dev server an
 http://localhost:3000/api/pubkey/diagnostics
 ```
 
-On the diagnostic page you can optionally pass in your own custom session values via query param:
+On the diagnostic page you can optionally pass in your own custom values via query param:
 
 ```
 http://localhost:3000/api/pubkey/diagnostics?k1=custom-k1&state=custom-state&pubkey=custom-pubkey&sig=custom-sig
