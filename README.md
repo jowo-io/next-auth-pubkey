@@ -166,14 +166,16 @@ const config: NextAuthPubkeyConfig = {
   /**
    * @param {object} storage
    *
-   * pubkey auth flows require that a callback be triggered
-   * part of the authentication flow. So, storage is required to
+   * pubkey auth flows require that a callback be triggered as
+   * part of the authentication flow. So storage is required to
    * persist some data and ensure it's available when the callback is triggered.
    * Data can be stored in a medium of your choice.
+   * e.g. a database, a document store, or a session store.
    *
    * Once you have configured the storage functions you should test them on the diagnostics page:
    * @see http://localhost:3000/api/pubkey/diagnostics
    *
+   * For examples implementations:
    * @see https://github.com/jowo-io/next-auth-pubkey/tree/main/examples/
    */
   storage: {

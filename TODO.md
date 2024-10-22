@@ -4,10 +4,9 @@ Below is a TODO list for further development of `next-auth-pubkey`.
 
 ### Bugs
 
-- next-auth@14.1.0 - ReferenceError: Cannot access 'lightningProvider' before initialization
 - consider removing the create interval - is it needed?
 
-### Beta
+### Tasks
 
 - update diagram to include nostr
 - add missing tests

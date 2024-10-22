@@ -3,7 +3,7 @@ import generateQr from "next-auth-pubkey/generators/qr";
 
 import { eq } from "drizzle-orm";
 
-import { pubkeyTable, PubKey } from "@/schema/db";
+import { pubkeyTable } from "@/schema/db";
 import db from "@/utils/db";
 import { env } from "@/env.mjs";
 
@@ -15,10 +15,11 @@ const config: NextAuthPubkeyConfig = {
       await db.insert(pubkeyTable).values(data);
     },
     async get({ k1 }) {
-      const results: PubKey[] = await db
+      const results = await db
         .select()
         .from(pubkeyTable)
-        .where(eq(pubkeyTable.k1, k1));
+        .where(eq(pubkeyTable.k1, k1))
+        .limit(1);
 
       return results[0];
     },

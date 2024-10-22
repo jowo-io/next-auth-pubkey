@@ -15,9 +15,7 @@ const config: NextAuthPubkeyConfig = {
       await prisma.pubkey.create({ data });
     },
     async get({ k1 }) {
-      const results = await prisma.pubkey.findUnique({ where: { k1 } });
-      if (!results) throw new Error(`Could not find k1:${k1}`);
-      return results;
+      return await prisma.pubkey.findUnique({ where: { k1 } });
     },
     async update({ k1, data }) {
       await prisma.pubkey.update({ where: { k1 }, data });
