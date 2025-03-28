@@ -249,63 +249,47 @@ export async function appHandler(
 }
 
 type Arguments = {
-  type: "pages" | "app";
   config: Config;
   req: NextApiRequest | NextRequest;
   res?: NextApiResponse;
 };
 
-export default async function pubkeyHandler(args: Arguments) {
-  const { type, req, res, config } = args;
+export default function getHandler(args: Arguments) {
+  const { req, res, config } = args;
 
   // get path from either pages or app router req/res objects
   const path = (res as any)?.params
     ? new URL((req as NextRequest).nextUrl).pathname
     : (req as any)?.url.replace(config.baseUrl, "");
 
-  console.log(path);
-
   let handler;
   if (path?.indexOf(config.apis.create) === 0) {
-    handler = createHandler;
+    return createHandler;
   } else if (path?.indexOf(config.apis.poll) === 0) {
-    handler = pollHandler;
+    return pollHandler;
   } else if (path?.indexOf(config.apis.callback) === 0) {
-    handler = callbackHandler;
+    return callbackHandler;
   } else if (path?.indexOf(config.apis.token) === 0) {
-    handler = tokenHandler;
+    return tokenHandler;
   } else if (path?.indexOf(config.apis.lightningSignIn) === 0) {
-    handler = lightningSignInHandler;
+    return lightningSignInHandler;
   } else if (path?.indexOf(config.apis.nostrSignIn) === 0) {
-    handler = nostrSignInHandler;
+    return nostrSignInHandler;
   } else if (path?.indexOf(config.apis.avatar) === 0) {
-    handler = avatarHandler;
+    return avatarHandler;
   } else if (path?.indexOf(config.apis.qr) === 0) {
-    handler = qrHandler;
+    return qrHandler;
   } else if (
     path?.indexOf(config.apis.diagnostics) === 0 &&
     config.flags.diagnostics
   ) {
-    handler = diagnosticsHandler;
+    return diagnosticsHandler;
   }
 
-  if (!handler) {
-    handler = async function ({}: HandlerArguments): Promise<HandlerReturn> {
-      return {
-        error: "NotFound",
-        status: 404,
-      };
+  return async function ({}: HandlerArguments): Promise<HandlerReturn> {
+    return {
+      error: "NotFound",
+      status: 404,
     };
-  }
-
-  if (type === "pages") {
-    return await pagesHandler(
-      req as NextApiRequest,
-      res as NextApiResponse,
-      config,
-      handler
-    );
-  } else {
-    return await appHandler(req as NextRequest, config, handler);
-  }
+  };
 }
