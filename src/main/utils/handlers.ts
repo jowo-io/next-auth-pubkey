@@ -1,9 +1,24 @@
 import { NextApiRequest, NextApiResponse } from "next/types";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
 import { Config } from "../config/index";
 
 import { cleanParams, paramsToObject } from "./params";
+
+// auth apis
+import createHandler from "../handlers/create";
+import pollHandler from "../handlers/poll";
+import callbackHandler from "../handlers/callback";
+import tokenHandler from "../handlers/token";
+
+// pages
+import lightningSignInHandler from "../handlers/lightning-signin";
+import nostrSignInHandler from "../handlers/nostr-signin";
+
+// misc
+import avatarHandler from "../handlers/avatar";
+import qrHandler from "../handlers/qr";
+import diagnosticsHandler from "../handlers/diagnostics";
 
 export type HandlerArguments = {
   query?: Record<string, string | boolean | number | undefined | null>;
@@ -149,7 +164,6 @@ export async function pagesHandler(
 
 export async function appHandler(
   req: NextRequest,
-  res: NextResponse,
   config: Config,
   handler: (args: HandlerArguments) => Promise<HandlerReturn>
 ) {
@@ -231,5 +245,67 @@ export async function appHandler(
     } else if (typeof output.response === "object") {
       return Response.json(output.response, options);
     }
+  }
+}
+
+type Arguments = {
+  type: "pages" | "app";
+  config: Config;
+  req: NextApiRequest | NextRequest;
+  res?: NextApiResponse;
+};
+
+export default async function pubkeyHandler(args: Arguments) {
+  const { type, req, res, config } = args;
+
+  // get path from either pages or app router req/res objects
+  const path = (res as any)?.params
+    ? new URL((req as NextRequest).nextUrl).pathname
+    : (req as any)?.url.replace(config.baseUrl, "");
+
+  console.log(path);
+
+  let handler;
+  if (path?.indexOf(config.apis.create) === 0) {
+    handler = createHandler;
+  } else if (path?.indexOf(config.apis.poll) === 0) {
+    handler = pollHandler;
+  } else if (path?.indexOf(config.apis.callback) === 0) {
+    handler = callbackHandler;
+  } else if (path?.indexOf(config.apis.token) === 0) {
+    handler = tokenHandler;
+  } else if (path?.indexOf(config.apis.lightningSignIn) === 0) {
+    handler = lightningSignInHandler;
+  } else if (path?.indexOf(config.apis.nostrSignIn) === 0) {
+    handler = nostrSignInHandler;
+  } else if (path?.indexOf(config.apis.avatar) === 0) {
+    handler = avatarHandler;
+  } else if (path?.indexOf(config.apis.qr) === 0) {
+    handler = qrHandler;
+  } else if (
+    path?.indexOf(config.apis.diagnostics) === 0 &&
+    config.flags.diagnostics
+  ) {
+    handler = diagnosticsHandler;
+  }
+
+  if (!handler) {
+    handler = async function ({}: HandlerArguments): Promise<HandlerReturn> {
+      return {
+        error: "NotFound",
+        status: 404,
+      };
+    };
+  }
+
+  if (type === "pages") {
+    return await pagesHandler(
+      req as NextApiRequest,
+      res as NextApiResponse,
+      config,
+      handler
+    );
+  } else {
+    return await appHandler(req as NextRequest, config, handler);
   }
 }
