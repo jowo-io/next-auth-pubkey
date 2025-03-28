@@ -1,6 +1,6 @@
 {
   "name": "next-auth-pubkey",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "description": "A light-weight Lightning and Nostr auth provider for your Next.js app that's entirely self-hosted and plugs seamlessly into the next-auth framework.",
   "license": "ISC",
@@ -58,7 +58,7 @@
     "node": ">=14"
   },
   "peerDependencies": {
-    "next": "^12.2.5 || ^13 || ^14",
+    "next": "^12.2.5 || ^13 || ^14 || ^15",
     "next-auth": "^4",
     "react": "^17.0.2 || ^18",
     "react-dom": "^17.0.2 || ^18"
