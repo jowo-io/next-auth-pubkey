@@ -8,6 +8,7 @@ Below is a TODO list for further development of `next-auth-pubkey`.
 
 ### Tasks
 
+- when an expired or invalid cookie is found, the handler will redirect back to signin page with error. further processing should take place on the cookie and remove it if appropriate and then continue to fresh login
 - add tests for `getHandler` method
 - update diagram to include nostr
 - add missing tests
