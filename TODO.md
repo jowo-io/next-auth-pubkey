@@ -8,6 +8,7 @@ Below is a TODO list for further development of `next-auth-pubkey`.
 
 ### Tasks
 
+- add tests for `getHandler` method
 - update diagram to include nostr
 - add missing tests
 - manual testing
@@ -19,8 +20,6 @@ Below is a TODO list for further development of `next-auth-pubkey`.
 
 ### Release
 
-- open PR on `next-auth`
-- add more example repos
 - Once `next-auth@v5` is out of beta, ensure it's supported.
 
 ##### Checklist

@@ -260,27 +260,27 @@ export default function getHandler(args: Arguments) {
   // get path from either pages or app router req/res objects
   const path = (res as any)?.params
     ? new URL((req as NextRequest).nextUrl).pathname
-    : (req as any)?.url.replace(config.baseUrl, "");
+    : (req as any)?.url;
 
   let handler;
-  if (path?.indexOf(config.apis.create) === 0) {
+  if (path?.indexOf(config.apis.create) > -1) {
     return createHandler;
-  } else if (path?.indexOf(config.apis.poll) === 0) {
+  } else if (path?.indexOf(config.apis.poll) > -1) {
     return pollHandler;
-  } else if (path?.indexOf(config.apis.callback) === 0) {
+  } else if (path?.indexOf(config.apis.callback) > -1) {
     return callbackHandler;
-  } else if (path?.indexOf(config.apis.token) === 0) {
+  } else if (path?.indexOf(config.apis.token) > -1) {
     return tokenHandler;
-  } else if (path?.indexOf(config.apis.lightningSignIn) === 0) {
+  } else if (path?.indexOf(config.apis.lightningSignIn) > -1) {
     return lightningSignInHandler;
-  } else if (path?.indexOf(config.apis.nostrSignIn) === 0) {
+  } else if (path?.indexOf(config.apis.nostrSignIn) > -1) {
     return nostrSignInHandler;
-  } else if (path?.indexOf(config.apis.avatar) === 0) {
+  } else if (path?.indexOf(config.apis.avatar) > -1) {
     return avatarHandler;
-  } else if (path?.indexOf(config.apis.qr) === 0) {
+  } else if (path?.indexOf(config.apis.qr) > -1) {
     return qrHandler;
   } else if (
-    path?.indexOf(config.apis.diagnostics) === 0 &&
+    path?.indexOf(config.apis.diagnostics) > -1 &&
     config.flags.diagnostics
   ) {
     return diagnosticsHandler;
