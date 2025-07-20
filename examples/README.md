@@ -20,14 +20,6 @@ The [examples/prisma/](https://github.com/jowo-io/next-auth-pubkey/tree/main/exa
 
 The [examples/drizzle/](https://github.com/jowo-io/next-auth-pubkey/tree/main/examples/drizzle) example demonstrates how to configure `next-auth-pubkey` using the [Drizzle ORM](https://github.com/drizzle-team/drizzle-orm) and MySql for storage of the pubkey auth data.
 
-### MongoDB
-
-> COMING SOON
-
-### Firebase
-
-> COMING SOON
-
 ### Customized UI
 
 ##### Pages router
