@@ -20,10 +20,10 @@ The `next-auth-pubkey` package extends `lnurl-auth` by wrapping it in an OAuth A
     "node": ">=14"
   },
   "peerDependencies": {
-    "next": "^12.2.5 || ^13 || ^14 || ^15",
+    "next": "^12.2.5 || ^13 || ^14 || ^15 || ^16",
     "next-auth": "^4",
-    "react": "^17.0.2 || ^18",
-    "react-dom": "^17.0.2 || ^18"
+    "react": "^17.0.2 || ^18 || ^19",
+    "react-dom": "^17.0.2 || ^18 || ^19"
   }
 }
 ```
