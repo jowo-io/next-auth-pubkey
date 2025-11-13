@@ -33,8 +33,8 @@ Below is a TODO list for further development of `next-auth-pubkey`.
 - publish with npm
 - create tag with git
   ```example
-  git tag v1.0.1
-  git push origin tag v1.0.1
+  git tag v1.0.10
+  git push origin tag v1.0.10
   ```
 - release on github: https://github.com/jowo-io/next-auth-pubkey/releases/new
 
