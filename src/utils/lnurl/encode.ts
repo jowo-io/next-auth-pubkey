@@ -1,7 +1,7 @@
 // @ts-nocheck
 
-const assert = require("assert");
-const { bech32 } = require("bech32");
+import { strict as assert } from "assert";
+import { bech32 } from "bech32";
 
 const rules = {
   prefix: "lnurl",

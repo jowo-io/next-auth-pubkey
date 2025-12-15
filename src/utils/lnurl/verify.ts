@@ -1,7 +1,7 @@
 // @ts-nocheck
 
-const assert = require("assert");
-const secp256k1 = require("secp256k1");
+import { strict as assert } from "assert";
+import secp256k1 from "secp256k1";
 
 function isHex(value) {
   assert.strictEqual(
