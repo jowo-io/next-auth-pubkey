@@ -25,11 +25,11 @@ export const revalidate = 0;
 export default async function SignIn({
   searchParams,
 }: {
-  searchParams: Record<string, string | string[]>;
+  searchParams: Promise<Record<string, string | string[]>>;
 }) {
   let session, error;
   try {
-    session = await createLightningAuth(searchParams);
+    session = await createLightningAuth(await searchParams);
   } catch (e) {
     error = e instanceof Error ? e.message : "Something went wrong";
   }

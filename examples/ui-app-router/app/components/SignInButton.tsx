@@ -3,11 +3,7 @@
 import { Session } from "next-auth";
 import { signOut, signIn } from "next-auth/react";
 
-export const SignInButton = async ({
-  session,
-}: {
-  session: Session | null;
-}) => {
+export const SignInButton = ({ session }: { session: Session | null }) => {
   return (
     <div>
       {session ? (
