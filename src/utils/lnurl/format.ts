@@ -1,4 +1,4 @@
-import { hardConfig } from "../main/config/hard";
+import { hardConfig } from "../../main/config/hard";
 
 export function formatLightningAuth(lnurl?: string | null) {
   if (!lnurl) {

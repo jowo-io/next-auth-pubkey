@@ -1,7 +1,7 @@
 import { describe, expect, test } from "@jest/globals";
 
-import { formatLightningAuth } from "./lnurl";
-import { hardConfig } from "../main/config/hard";
+import { formatLightningAuth } from "./format";
+import { hardConfig } from "../../main/config/hard";
 
 const lnurl = "LNURL1234567890QWERTYUIOP";
 

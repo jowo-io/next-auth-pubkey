@@ -3,7 +3,7 @@ import {
   callbackBodyValidation,
 } from "../validation/api";
 import { HandlerArguments, HandlerReturn } from "../utils/handlers";
-import lnurlVerifyAuthorizationSignature from "lnurl/lib/verifyAuthorizationSignature.js";
+import lnurlVerifyAuthorizationSignature from "../../utils/lnurl/verify";
 import { createHash } from "crypto";
 import { schnorr } from "@noble/curves/secp256k1";
 

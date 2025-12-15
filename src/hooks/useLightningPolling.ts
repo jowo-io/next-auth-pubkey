@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 import { hardConfig } from "../main/config/hard";
 import { NextAuthPubkeyClientSession } from "../server";
-import { formatLightningAuth } from "../utils/lnurl";
+import { formatLightningAuth } from "../utils/lnurl/format";
 import { maxNetworkRequestsFailures } from "./constants";
 
 /**

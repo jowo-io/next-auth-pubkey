@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "preact/compat";
 
-import { formatLightningAuth } from "../../utils/lnurl";
+import { formatLightningAuth } from "../../utils/lnurl/format";
 import { hardConfig } from "../config/hard";
 
 export function QrCode({

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 import { hardConfig } from "../main/config/hard";
 import { cleanParams } from "../main/utils/params";
-import { formatLightningAuth } from "../utils/lnurl";
+import { formatLightningAuth } from "../utils/lnurl/format";
 import { maxNetworkRequestsFailures } from "./constants";
 
 /**
